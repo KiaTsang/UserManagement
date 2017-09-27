@@ -1,0 +1,17 @@
+{
+    "draw":1,
+    "recordsTotal":11,
+    "recordsFiltered"	:11,
+    "data":
+    [{ "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"},
+    { "userName": "曾庆越", "sex": "男","hobby": "篮球","department": "产业部","birthday": "1999-01-01", "duty":"工程师","tel": "138********"}]
+}

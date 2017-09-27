@@ -1,0 +1,275 @@
+textarea.no-resize {
+	resize: none;
+}
+
+.note_error {
+	font-size: 11px;
+	line-height: 15px;
+	margin-top: 6px;
+	padding: 0 1px;
+}
+
+.fixedTable {
+	width: 100%;
+	table-layout: fixed!important;
+	word-wrap:break-word!important;
+}
+
+.fixedTable td {
+	/* 
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	*/
+}
+
+.fixedTable td .imgAlignment {
+	vertical-align: -2px;
+}
+
+.assign-dialog-heading {
+	-moz-box-sizing: border-box;
+	background: none repeat scroll 0 0 #F0F0F0;
+	border-bottom: 1px solid #CCCCCC;
+	height: 56px;
+	margin: 0;
+	overflow: hidden;
+	padding: 15px 20px;
+	position: relative;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.buttons-container {
+	background: none repeat scroll 0 0 #F0F0F0;
+	border-top: 1px solid #CCCCCC;
+	/* height: 55px!important;
+    text-align: right;
+    white-space: nowrap;
+    padding: 10px 23px;*/
+}
+
+.table .checkbox-inline {
+	margin-left: 0 !important;
+}
+
+.table .radio-inline {
+	margin-top: 0 !important;
+}
+
+#tagTable {
+	margin-bottom: 0 !important;
+}
+
+.widget-body .widget-hide-overflow {
+	height: 417px;
+	position: relative;
+}
+
+.border-bottom-fixed {
+	border-bottom: 1px solid #ccc;
+}
+
+.panel-body>.radio-inline:first-child {
+	margin-top: 0px !important;
+}
+
+.star-icon {
+	color: #8c8a82 !important;
+	cursor: pointer;
+	font-size: 17px !important;
+}
+
+.btn-load-more-history {
+	display: none;
+}
+
+.smart-timeline-list .well {
+	margin-bottom: 10px !important;
+	max-width: 50% !important;
+}
+
+.align-padding {
+	padding: 0 13px 0px 13px;
+}
+
+#moreConditions {
+	padding: 0 13px 0 14px;
+}
+
+#combinational-search-form .responsive-alignment {
+	padding: 0 20px 0 0;
+	margin: 0 0 0 -6px;
+}
+
+.smart-timeline-content .title {
+	color: #3276b1;
+}
+
+.title-link {
+	color: #555 !important;
+}
+
+#dt_issues>tbody>tr:hover, #btn-operation-group>tbody>tr:hover,
+	#dt_attentionIssues>tbody>tr:hover, #dt_pendingDisposeIssues>tbody>tr:hover,
+	#dt_submitIssues>tbody>tr:hover, #dt_complain>tbody>tr:hover,
+	#dt_outside>tbody>tr:hover {
+	cursor: pointer !important;
+}
+
+.without-decoration {
+	text-decoration: none !important;
+}
+
+.font-default {
+	color: #555555 !important;
+}
+
+.font-white {
+	color: #fff !important;
+}
+
+.nf {
+	float: none !important;
+}
+
+.mh {
+	max-height: 350px !important;
+}
+
+.hs {
+	overflow-y: auto !important;
+}
+
+.plr13 {
+	padding-left: 13px !important;
+	padding-right: 13px !important;
+}
+
+.select2-container .select2-choice abbr:before {
+	border: 0 none;
+	color: #000;
+	content: "x";
+	cursor: pointer;
+	float: right;
+	font-family: "Microsoft Yahei", "Open Sans", FontAwesome, Arial,
+		Helvetica, sans-serif;
+	font-size: 14.5px;
+	font-weight: bold;
+	height: 12px;
+	opacity: 0.2;
+	outline: 0 none;
+	position: absolute;
+	right: 15px;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #fff;
+	top: -2px;
+	width: 12px;
+}
+
+.margin-bottom-15 {
+	margin-bottom: 15px !important
+}
+
+.margin-bottom-30 {
+	margin-bottom: 30px !important
+}
+
+.margin-bottom-35 {
+	margin-bottom: 35px !important
+}
+
+.margin-top-10 {
+	margin-top: 10px !important
+}
+
+.strong {
+	font-weight: bold !important;
+}
+
+.radio-inline+.radio-inline, .checkbox-inline+.checkbox-inline {
+	margin-left: 0 !important;
+}
+
+.label-block .label-choice-close {
+	display: block;
+	padding: 5px 4px 3px 6px;
+	right: 0;
+	top: 0;
+	font-family: FontAwesome;
+	font-size: 12px !important;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1;
+	margin: 0;
+	min-height: 20px;
+	min-width: 21px;
+	text-decoration: none !important;
+}
+
+.datatable-pagination {
+    border-top-width: 1px;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-style: solid;
+    border-color: #ccc;
+    padding: 5px 10px;
+}
+    
+.pagination-sum-info {
+    height: 30px;
+    padding: 5px 10px 5px 0;
+    background-color: #FAFAFA;
+    border-top-width: 1px;
+    border-right-width: 0;
+    border-bottom-width: 1px;
+    border-left-width: 0;
+    border-style: solid;
+    border-color: #ccc;
+}
+
+.flotItmesContainer {
+	height: 30px;
+	position: relative;
+}
+
+.flotItmesContainer table {
+	float: right;
+}
+
+div.dataTables_length {
+    position: relative;
+    right: 0;
+    top: 0;
+    padding-top: 2px;
+}
+
+.has-error .note-editor {
+	border-color: #b94a48;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+.break-all {
+	word-break: break-all;
+}
+
+.fontsize-24 {
+	font-size: 24px;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.opinion-table {
+    table-layout: fixed;
+}
+
+.opinion-table td {
+    word-break: break-all;
+}
+
+.w-600 {
+	width: 600px;
+}
