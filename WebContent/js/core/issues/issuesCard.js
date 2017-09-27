@@ -12,21 +12,6 @@
 var issueCard = (function() {
     return {
         runDataTables: function() {
-            var data = [
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'},
-                { "userName": '曾庆越', "sex": "男", "hobby": '篮球', "department": '产业部',"birthday": '1999-01-01', "duty":'工程师',"tel": '138********'}
-            ];
             // 表头定义
             var tableHead = [
                 { "sWidth": "10%","sTitle": "用户名称", "mData": "userName","bSortable":true},
