@@ -14,28 +14,31 @@ var issueCard = (function() {
         runDataTables: function() {
             // 表头定义
             var tableHead = [
-                { "sWidth": "10%","sTitle": "用户名称", "mData": "userName","bSortable":true},
-                { "sWidth": "10%","sTitle": "性别", "mData": "sex","bSortable":true},
-                { "sWidth": "10%","sTitle": "爱好","mData": "hobby","bSortable":true },
-                { "sWidth": "7%","sTitle": "岗位","mData": "department","bSortable":true },
-                { "sWidth": "7%","sTitle": "出生日期","mData": "birthday","bSortable":false},
-                { "sWidth": "7%","sTitle": "职务", "mData": "duty","bSortable":false},
-                { "sWidth": "7%","sTitle": "电话号码", "mData": "tel" ,"bSortable":false}
+                { "sTitle": "报表任务信息ID", "mData": "reportTaskId","bVisible":false},
+                { "sTitle": "报表名称","mData": "reportTaskName","type" :"string" },
+                { "sTitle": "活动状态", "mData": "repTaskActivityTypeName","type":"repTaskActivityTypeCombo"},
+                { "sTitle": "产品类型", "mData": "productTypeName","type" :"string" },
+                { "sTitle": "品牌", "mData": "brandName","type" :"string"},
+                { "sTitle": "运营商", "mData": "operatorName","type" :"string"},
+                { "sTitle": "分发类型", "mData": "reportSendTypeName","type":"reportSendTypeCombo" },
+                { "sTitle": "创建人", "mData": "paaUsername" ,"type" :"string"},
+                { "sTitle": "开始时间", "mData": "startTime","type" :"date"},
+                { "sTitle": "结束时间","mData": "endTime","type" :"date"}
             ];
-           console.log($.url_root + "/js/core/issues/data.json");
+
            var oTable =  $('#dt_issues').dataTable({
                 "aoColumns": tableHead,
                 "serverSide": true,
                 "bAutoWidth": false,
                 "responsive": true,
                 "ordering": true,
-                "order": [[ 1, "desc" ]],
+                "order": [[ 2, "ASC" ]],
                 "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                 "lengthChange": true,
                 "paging": true,
                 "sDom": "<'dt-top-row'><'dt-wrapper't><'dt-row dt-bottom-row'<'row'<'col-sm-4'i><'col-sm-8 text-right'p>><'row'<'col-xs-12 col-sm-12 col-md-12 col-lg-12'l>>>",
                 "ajax": {
-                    url: $.url_root + "/js/core/issues/data.json",
+                    url: "../../controllerProxy.do?method=callBack",
                     type: "POST",
                     dataSrc: "data",
                     traditional: true, //if the value from the select2 plugin, it should be true

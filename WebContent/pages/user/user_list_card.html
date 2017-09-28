@@ -161,35 +161,35 @@
                                                         </li>
                                                         <li class="divider"></li>
                                                         <li>
-                                                            <a href="javascript:;" data-last-value="projectName">用户名称</a>
+                                                            <a href="javascript:;" data-last-value="reportTaskName">报表名称</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:;" data-last-value="summary">概况</a>
+                                                            <a href="javascript:;" data-last-value="productTypeName">产品类型</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:;" data-last-value="priority" data-multi="true">职务</a>
+                                                            <a href="javascript:;" data-last-value="brandName">品牌</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:;" data-last-value="status" data-multi="true">爱好</a>
+                                                            <a href="javascript:;" data-last-value="operatorName">运营商</a>
                                                         </li>
                                                         <li>
-                                                            <a href="javascript:;" data-last-value="severity" data-multi="true">性别</a>
+                                                            <a href="javascript:;" data-last-value="reportSendTypeName" data-multi="true">分发类型</a>
                                                         </li>
                                                     </ul>
                                                 </div>
         	                                    <input class="form-control" type="text" placeholder="项目提示" name="allMatchers" data-keyup="true">
         
-        	                                    <input class="form-control hidden" type="text" placeholder="用户名称"  name="projectName" data-keyup="true">
+        	                                    <input class="form-control hidden" type="text" placeholder="报表名称"  name="reportTaskName" data-keyup="true">
         
-                                                <input class="form-control hidden" name="summary" type="text" placeholder="项目概况" data-keyup="true">
+                                                <input class="form-control hidden" name="productTypeName" type="text" placeholder="产品类型" data-keyup="true">
         
         	                                    <!--请保留name="status"和data-src="local", data-src属性指示数据来源于本地-->
-        	                                    <input class="hidden" name="status" type="hidden" placeholder="职务" data-src="local">
+        	                                    <input class="form-control hidden" name="brandName" type="text" placeholder="品牌"  data-keyup="true">
         
         	                                    <!--请保留name="severity"和data-src="local", data-src属性指示数据来源于本地-->
-        	                                    <input class="hidden" name="priority" type="hidden" placeholder="爱好" data-src="local">
+        	                                    <input class="form-control hidden" name="operatorName" type="text" placeholder="运营商"  data-keyup="true">
         
-                                                <input class="hidden" name="severity" type="hidden" placeholder="性别" data-src="local">
+                                                <input class="hidden" name="reportSendTypeName" type="hidden" placeholder="分发类型" data-src="local">
         
         	                                    <div class="input-group-btn">
         	                                      <button id="btn-simple-search" type="button" class="btn btn-primary">
@@ -214,60 +214,25 @@
         	                                        <div class="row" style="margin: 0;">
         	                                            <div class="col-sm-6 col-md-4 col-lg-4">
         	                                                <div class="form-group">
-        	                                                    <input class="form-control" style="padding-left: 5px;" name="projectName" type="text" placeholder="project.name" data-moda="combination">
-        	                                                </div>
-        	                                            </div>
-        	                                            <div class="col-sm-6 col-md-4 col-lg-4">
-        	                                                <div class="form-group">
-        	                                                    <input name="receivers" type="hidden" class="modal-receiver ignored" data-placeholder="issue.reciever" data-moda="combination">
+        	                                                    <input class="form-control" style="padding-left: 5px;" name="reportTaskName" type="text" placeholder="项目名称" data-moda="combination" data-type="string">
         	                                                </div>
         	                                            </div>
         	                                            <div class="col-sm-6 col-md-4 col-lg-4">
         	                                                <div class="form-group">
         	                                                    <!--请保留name="status"和data-src="local", data-src属性指示数据来源于本地-->
-        	                                                    <input name="status" type="hidden" placeholder="issue.status" data-moda="combination" data-src="local">
+        	                                                    <input name="reportSendTypeName" type="hidden" placeholder="分发类型" data-moda="combination" data-src="local" data-type="checkbox">
         	                                                </div>
         	                                            </div>
                                                     </div>
                                                     <div class="row" style="margin: 0;">
-        	                                            <div class="col-sm-6 col-md-4 col-lg-4">
-        	                                                <div class="form-group">
-        	                                                    <!--请保留name="severity"和data-src="local", data-src属性指示数据来源于本地-->
-        	                                                    <input name="priority" type="hidden" placeholder="issue.priority" data-moda="combination" data-src="local">
-        	                                                </div>
-        	                                            </div>
                                                         <div class="col-sm-6 col-md-4 col-lg-4">
                                                             <div class="form-group">
-                                                                <input name="severity" type="hidden" placeholder="issue.level" data-moda="combination" data-src="local">
+                                                                <input id="startDate" type="text" placeholder="开始日期" class="form-control input-sm" name="startTime" data-type="date" data-moda="combination">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6 col-md-4 col-lg-4">
                                                             <div class="form-group">
-                                                                <input class="form-control" style="padding-left: 5px;" name="summary" type="text" placeholder="issue.summary" data-moda="combination">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row" style="margin: 0;">
-                                                        <div class="col-sm-6 col-md-4 col-lg-4">
-                                                            <div class="form-group">
-                                                                <input name="securityLevel" type="hidden" placeholder="issue.securityLevel" data-moda="combination" data-src="local">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6 col-md-4 col-lg-4">
-                                                            <div class="form-group">
-                                                                <input name="allPerson" type="hidden" placeholder="issue.owner" data-moda="combination" data-allUsers="true">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row" style="margin: 0;">
-                                                        <div class="col-sm-6 col-md-4 col-lg-4">
-                                                            <div class="form-group">
-                                                                <input type="text" id="startDate" placeholder="开始日期" class="form-control input-sm" name="startDate" data-type="start" data-moda="combination">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6 col-md-4 col-lg-4">
-                                                            <div class="form-group">
-                                                                <input type="text" id="endDate" placeholder="结束日期" class="form-control input-sm" name="endDate" data-type="end" data-moda="combination">
+                                                                <input id="endDate" type="text" placeholder="结束日期" class="form-control input-sm" name="endTime" data-type="date" data-moda="combination">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -389,6 +354,9 @@
     <script src="../../js/core/componentConfig.js"></script>
     <!--<script src="../../js/app.js"></script>-->
     <script src="../../js/resetheight.js"></script>
+    <script src="../../js/common/GlobalInfo.js"></script>
+    <script src="../../js/util/MyJsonUtil.js"></script>
+    <script src="../../js/util/StringUtil.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#top").load("../../pages/top.html");

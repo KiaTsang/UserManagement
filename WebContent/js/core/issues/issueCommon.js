@@ -690,6 +690,7 @@ var issueCommon = (function($) {
             if ($('#dt_issues').length == 0) {
                 urlResult = self._const.editUrlprefix + url;
             }
+            console.log(urlResult);
             $.ajax({
                 url: urlResult,
                 type: "post",
@@ -984,9 +985,20 @@ var issueCommon = (function($) {
                 "text": i18nRes.issue.issueStatus.DRAFT
             }],
 
+            reportSendTypeName: [{
+                "id": "B2BIC",
+                "text": "B2BIC"
+            }, {
+                "id": "E-MAIL",
+                "text": "E-MAIL"
+            }, {
+                "id": "FTP专线",
+                "text": "FTP专线"
+            }],
+
             severity: [{
                 "id": "DEADLY",
-                "text": i18nRes.issue.issueSeverity.DEADLY
+                "text": ""
             }, {
                 "id": "SERIOUS",
                 "text": i18nRes.issue.issueSeverity.SERIOUS
@@ -1182,6 +1194,8 @@ var issueCommon = (function($) {
         },
         // 设置Datatable的分页与查询
         setDatatableData: function(params) {
+            var queryConditions = [];
+            var putObj = [];
             var customParams = {
                     draw: params.draw, // draw, avoid to be attacted
                     pageSize: params.length, // pageSize
@@ -1189,46 +1203,86 @@ var issueCommon = (function($) {
                 },
                 that = this,
                 conditionPrefix = that._const.conditionPrefix;
-            console.log(customParams);
-            $.extend(customParams, params.order[0] ? {colIndex: params.order[0].column,
-                dir: params.order[0].dir} : undefined);
+//            $.extend(customParams, params.order[0] ? {colIndex: params.order[0].column,
+//                dir: params.order[0].dir} : undefined);
 
-            customParams[conditionPrefix + "type"] = $("#query-Type").val();
-            customParams[conditionPrefix + "beanString"] = $.search_issue_labelIds;
-            customParams[conditionPrefix + "exactly"] = $.search_issue_isExact;
+//            customParams[conditionPrefix + "type"] = $("#query-Type").val();
+//            customParams[conditionPrefix + "beanString"] = $.search_issue_labelIds;
+//            customParams[conditionPrefix + "exactly"] = $.search_issue_isExact;
 
             if ($("#query-mode").val() === that._const.searchType.simple) {
+                var obj = {};
+
+                obj.isLike = true;
+                obj.isRaw = false;
+                obj.isEntityField = true;
+                obj.isCaseSensitive = false;
                 var $selected = $("#issue-condition-selector > li.active > a"),
                     selectedComponentName = $selected.data("lastValue"),
                     inputValue = $.trim($("input[name=" + selectedComponentName + "]").val());
-
+                    obj.fieldName = selectedComponentName;
                 if (inputValue) {
                     if ($selected.data("multi")) {
-                        customParams[conditionPrefix + selectedComponentName] = common.splitStr(inputValue); // 下拉框处理
+                        obj.type = "checkbox";
+                        obj.checkboxCondition = inputValue;
+//                        customParams[conditionPrefix + selectedComponentName] = common.splitStr(inputValue); // 下拉框处理
                     } else {
-                        customParams[conditionPrefix + selectedComponentName] = inputValue;
+                        obj.type = "string";
+                        obj.stringCondition = inputValue;
+//                        customParams[conditionPrefix + selectedComponentName] = inputValue;
                     }
+
                 }
+                queryConditions.push(obj);
             } else if ($("#query-mode").val() === that._const.searchType.combination) {
                 $("input[data-moda]").each(function(i, dom) {
                     var inputValue = $.trim($(this).val());
-
                     if (inputValue) {
-                        if ($(this).is(":hidden")) {
-                            customParams[conditionPrefix + $(this).attr("name")] = common.splitStr(inputValue);
+                        var obj = {};
+                        obj.isLike = true;
+                        obj.isRaw = false;
+                        obj.isEntityField = true;
+                        obj.isCaseSensitive = false;
+                        obj.fieldName = $(this).attr("name");
+                        console.log($(this).data("type"));
+                        if ($(this).data('type') === "checkbox") {
+                            obj.type = "checkbox";
+                            obj.checkboxCondition = inputValue;
+//                            customParams[conditionPrefix + $(this).attr("name")] = common.splitStr(inputValue);
+                        } else if ($(this).data('type') === "date") {
+                            var myStartFieldValue = inputValue + " 00:00:00";
+                            var myEndFieldValue = inputValue + " 23:59:59";
+                            obj.type = "date";
+                            obj.startDate = myStartFieldValue;
+                            obj.endDate = myEndFieldValue;
+//                            customParams[conditionPrefix + $(this).attr("name")] = common.splitStr(inputValue);
                         } else {
+                            obj.type = "string";
+                            obj.stringCondition = inputValue;
                             customParams[conditionPrefix + $(this).attr("name")] = inputValue; // 文本域处理
                         }
+                        queryConditions.push(obj);
                     }
                 });
             }
 
-            return customParams;
+            putObj.push(StringUtil.decorateRequestData('List',queryConditions));
+            putObj.push(StringUtil.decorateRequestData('Integer',params.start + 1));
+            putObj.push(StringUtil.decorateRequestData('Integer',params.length));
+
+            var obj = new Object();
+            obj.proxyClass = "fileController";
+            obj.proxyMethod = "getReportTaskListByCondition";
+            obj.jsonString = MyJsonUtil.obj2str(putObj);
+//            SMController.getUrl({controller:'controllerProxy',method:'callBack'
+//                ,proxyClass:'fileController',proxyMethod:'getReportTaskListByCondition',jsonString:MyJsonUtil.obj2str(putObj)});
+
+            return obj;//customParams;
         },
         // 刷新列表
         refreshDataTable: function(urlTemp) {
-            var url = $.findIssuesbyCondition;
-
+//            var url = $.findIssuesbyCondition;
+            var url = '../../controllerProxy.do?method=callBack';
             if (urlTemp != null) {
                 url = urlTemp;
             }
@@ -1240,26 +1294,27 @@ var issueCommon = (function($) {
             }
 
             $('#dt_issues').on('preXhr.dt', function(e, settings, data) {
-                if (isCard) {
-                    data["issueQueryCondition.beanString"] = $.search_global_issue_card_labelIds;
-                    // data["issueQueryCondition.type"] = "card";
-                    data["issueQueryCondition.exactly"] = $.search_global_issue_card_isExact;
-                } else if (isSys) {
-                    data["issueQueryCondition.beanString"] = $.search_global_issue_sys_labelIds;
-                    // data["issueQueryCondition.type"] = "system";
-                    data["issueQueryCondition.exactly"] = $.search_global_issue_sys_isExact;
-                } else if (isWhite) {
-                    data["issueQueryCondition.beanString"] = $.search_global_issue_white_labelIds;
-                    // data["issueQueryCondition.type"] = "whitebox";
-                    data["issueQueryCondition.exactly"] = $.search_global_issue_white_isExact;
-                } else {
-                    if ($.search_issue_labelIds) {
-                        data["issueQueryCondition.beanString"] = $.search_issue_labelIds;
-                        data["issueQueryCondition.exactly"] = $.search_issue_isExact;
-                    }
-                }
+                console.log('preXhr');
+//                if (isCard) {
+//                    data["issueQueryCondition.beanString"] = $.search_global_issue_card_labelIds;
+//                    // data["issueQueryCondition.type"] = "card";
+//                    data["issueQueryCondition.exactly"] = $.search_global_issue_card_isExact;
+//                } else if (isSys) {
+//                    data["issueQueryCondition.beanString"] = $.search_global_issue_sys_labelIds;
+//                    // data["issueQueryCondition.type"] = "system";
+//                    data["issueQueryCondition.exactly"] = $.search_global_issue_sys_isExact;
+//                } else if (isWhite) {
+//                    data["issueQueryCondition.beanString"] = $.search_global_issue_white_labelIds;
+//                    // data["issueQueryCondition.type"] = "whitebox";
+//                    data["issueQueryCondition.exactly"] = $.search_global_issue_white_isExact;
+//                } else {
+//                    if ($.search_issue_labelIds) {
+//                        data["issueQueryCondition.beanString"] = $.search_issue_labelIds;
+//                        data["issueQueryCondition.exactly"] = $.search_issue_isExact;
+//                    }
+//                }
             }).DataTable().ajax.url(url).load(function(json) {
-
+                console.log('load');
                 $('#top_totalCount,#bottom_totalCount').html(json.recordsFiltered);
                 $('#top_usedSeconds').html(json.usedSeconds);
             }); // 重绘datatable，再次触发ajax请求

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data
+        xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+        version="1.8">
+
+        <!--
+                See: http://www.quartz-scheduler.org/docs/cookbook/JobInitPlugin.html
+        -->
+
+        <!-- <pre-processing-commands>
+                <delete-jobs-in-group>*</delete-jobs-in-group>  clear all jobs in scheduler
+                <delete-triggers-in-group>*</delete-triggers-in-group> clear all triggers in scheduler
+        </pre-processing-commands> -->
+
+        <processing-directives>
+                <!--
+                        if there are any jobs/trigger in scheduler of same name (as in this
+                        file), overwrite them
+                -->
+                <overwrite-existing-data>true</overwrite-existing-data>
+                <!--
+                        if there are any jobs/trigger in scheduler of same name (as in this
+                        file), and over-write is false, ignore them rather then generating an
+                        error
+                -->
+                <ignore-duplicates>false</ignore-duplicates>
+        </processing-directives>
+
+        <!-- Ok this is where all the jobs are created: -->
+
+        <schedule>
+                <job>
+                        <name>RepTaskSendSyncJob</name>
+                        <job-class>ecp.bsp.business.file.job.RepTaskSendSyncJob</job-class>
+                        <durability>true</durability>
+      					<recover>false</recover>
+                </job>
+                <trigger>
+			      <cron>
+			        <name>RepTaskSendSyncJobTrigger</name>
+			        <job-name>RepTaskSendSyncJob</job-name>
+			        <cron-expression>0 0/2 * * * ?</cron-expression><!-- 每3分钟执行一次 -->
+			      </cron>
+			    </trigger>
+			  <!--    <trigger>
+                        <simple>
+                                <name>RepTaskSendSyncJobTrigger</name>
+                                <job-name>RepTaskSendSyncJob</job-name>
+                                <repeat-count>-1</repeat-count> repeat forever 
+                                <repeat-interval>6000000</repeat-interval> 
+                        </simple>
+                </trigger>  -->
+                
+			    
+                <job>
+                        <name>RepTaskAttachDeleteJob</name>
+                        <job-class>ecp.bsp.business.file.job.RepTaskAttachDeleteJob</job-class>
+                        <durability>true</durability>
+      					<recover>false</recover>
+                </job>
+                 
+                <trigger>
+			      <cron>
+			        <name>RepTaskAttachDeleteJobTrigger</name>
+			        <job-name>RepTaskAttachDeleteJob</job-name>
+			        <cron-expression>0 0 0 * * ? </cron-expression><!-- 每天凌晨0点执行 -->
+			      </cron>
+			    </trigger>
+			    <!--  every day(24*60*60*1000) -->
+			 <!--    <trigger> 
+                        <simple>
+                                <name>RepTaskAttachDeleteJobTrigger</name>
+                                <job-name>RepTaskAttachDeleteJob</job-name>
+                                <repeat-count>-1</repeat-count> repeat forever 
+                                <repeat-interval>86400000</repeat-interval> 
+                        </simple>
+                </trigger>-->
+        </schedule>
+</job-scheduling-data>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+      	http://www.springframework.org/schema/context
+       	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       	http://www.springframework.org/schema/aop 
+       	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd ">
+    <!-- <import resource="quartz-config.xml"/> -->
+        
+	<!-- 自动扫描类 -->
+	<context:component-scan base-package="ecp.bsp.business" />
+	<context:component-scan base-package="ecp.bsp.system" />
+	 
+	<!-- 定位多个properties 配置文件 -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="locations">
+         <list>
+          <value>classpath:ecp/bsp/system/configs/properties/dataSource.properties</value>
+          <value>classpath:ecp/bsp/system/configs/properties/paa.properties</value>
+         </list>
+      </property>
+    </bean>
+   
+    <!-- 配置PAA所需数据 -->
+	<bean id="paaConfiguration" class="ecp.bsp.system.commons.dto.PAAConfiguration">
+	    <property name="paaAccessUrl" value="${paa.accessUrl}"/>
+    	<property name="paaAccessApplication" value="${paa.accessApplication}"/>
+	</bean>
+	
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+	</bean>
+	
+	<!-- 配置所有DTO的扫描路径 -->
+	<bean id="i18NClassNameCollection" class="ecp.bsp.system.framework.query.data.entity.I18NClassNameCollection">
+		<property name="dtoPaths" >
+		<list>
+		  <value>ecp.bsp.business.file.dto</value>
+	    </list>
+	    </property>
+    </bean>
+    
+	<!-- 配置hibernate session工厂 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<list> 
+	         	<value>ecp.bsp.business</value> 
+	         	<value>ecp.bsp.system</value> 
+	     	</list> 
+		</property>
+		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
+				<prop key="hibernate.max_fetch_depth">${hibernate.max_fetch_depth}</prop>
+				<prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
+				<prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 定义事务管理器（注解式的事务） --> 
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- 配置JdbcTemplate实例 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="contextBeanFactory" class="ecp.bsp.system.framework.context.ContextBeanFactory" scope="singleton"></bean>  
+	
+</beans>
