@@ -12,14 +12,16 @@
     <!-- Date Picker -->
     <link href="../../css/datepicker3.css" media="screen" rel="stylesheet" type="text/css">
     <link href="../../css/dataTables.colVis.min.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- File Upload -->
+    <link href="../../css/bootstrap-fileupload.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="../../css/jquery.fileupload-ui.css" media="screen" rel="stylesheet" type="text/css"/>
     <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
     <link href="../../css/demo.css" media="screen" rel="stylesheet" type="text/css">
     <!-- FAVICONS -->
     <link href="../../img/favicon/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="../../img/favicon/favicon.ico" rel="icon" type="image/x-icon">
     <!-- GOOGLE FONT -->
-    <!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" rel="stylesheet">-->
-
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" rel="stylesheet">
     <!-- Specifying a Webpage Icon for Web Clip
          Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
     <link href="../../img/splash/sptouch-icon-iphone.png" rel="apple-touch-icon">
@@ -425,26 +427,31 @@
                     </div>
                       <div class="row">
                         <div class="smart-form col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                              <div class="hidden" id="imageError"><label style="font-size:10px; color:#DE1F00;"></label></div>
-                              <label class="input input-file" for="file">
-                                <div class="button">
-                                  <input id="file-upload" type="file" name="upload">
-                                   上传附件
-                                </div> <input type="text" id="fileName" readonly="" placeholder="选择文件">
-                              </label>
-                              <div class="note">提示</div>
+                            <div>
+                                <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
+                                </form>
+                            </div>
+                              <!--<div class="hidden" id="imageError"><label style="font-size:10px; color:#DE1F00;"></label></div>-->
+                              <!--<label class="input input-file" for="file">-->
+                                <!--<div class="button">-->
+                                  <!--<input id="file-upload" type="file" name="upload" multiple="true">-->
+                                   <!--上传附件-->
+                                <!--</div>-->
+                                  <!--<input type="text" id="fileName" readonly="" placeholder="选择文件">-->
+                              <!--</label>-->
+                              <!--<div class="note">提示</div>-->
                         </div>
                         </div>
                       </div>
                     <br>
-                    <div class="chat-body no-padding profile-message">
-                      <table id="fileAttachements" class="table table-hover table-noborder">
-                        <tbody>
-                        </tbody>
-                      </table>
-                      <div id="fileAttachements_tmp" style="display: none">
-                      </div>
-                    </div>
+                    <!--<div class="chat-body no-padding profile-message">-->
+                      <!--<table id="fileAttachements" class="table table-hover table-noborder">-->
+                        <!--<tbody>-->
+                        <!--</tbody>-->
+                      <!--</table>-->
+                      <!--<div id="fileAttachements_tmp" style="display: none">-->
+                      <!--</div>-->
+                    <!--</div>-->
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <hr>
@@ -528,13 +535,21 @@
 <script src="../../js/core/issues/i18n.js"></script>
 <!-- MAIN APP JS FILE -->
 <script src="../../js/app.js"></script>
+<!-- FILE UPLOAD-->
+<script src="../../js/plugin/jquery-file/jquery.fileupload.js"></script>
+<!-- The File Upload file processing plugin -->
+<script src="../../js/plugin/jquery-file/jquery.fileupload-fp.js"></script>
+<!-- The File Upload user interface plugin -->
+<script src="../../js/plugin/jquery-file/jquery.fileupload.ui.js"></script>
 <!-- CUSTOM NOTIFICATION -->
 <script src="../../js/notification/SmartNotification.min.js"></script>
 <script src="../../js/core/common.js"></script>
 <script src="../../js/core/componentConfig.js"></script>
 <script src="../../js/resetheight.js"></script>
-<script src="../../js/core/attachmentPlugin.js"></script>
-<script src="../../js/core/DomUtil.js"></script>
+<!--<script src="../../js/core/attachmentPlugin.js"></script>-->
+<script src="../../js/common/GlobalInfo.js"></script>
+<script src="../../js/util/MyJsonUtil.js"></script>
+<script src="../../js/util/StringUtil.js"></script>
 <script type="text/javascript">
 //    $.get("../../pages/top.html",function(data){
 //        $("#top").html(data);
@@ -601,13 +616,27 @@
    */
     loadScript("../../js/plugin/summernote/summernote.js" , summernoteStart);
     function summernoteStart() {
-        loadScript("/js/lang/summernote-zh-CN.js" , function() {
+        loadScript("../../js/lang/summernote-zh-CN.js" , function() {
             $('.summernote').summernote($.extend(Eipd.namespace("config").summernote, {
                 onkeyup: function(e) {
                     saveNotes();
                     // validateSummernote();
                 }
             }));
+        });
+    }
+
+    /*
+     * attachmentPlugin
+     */
+    loadScript("../../js/core/attachmentPlugin.js" , createAttachmentPlugin);
+    function createAttachmentPlugin() {
+        $('#fileupload').attachmentPlugin({
+        });
+
+        $('#fileupload').fileupload({
+            myUrl: SMController.getUrl({controller:'controllerProxy',method:'callBackByRequest'
+                ,proxyClass:'attachmentController',proxyMethod:'upload',jsonString:''})
         });
     }
 
@@ -980,78 +1009,78 @@
         });
     }
 
-    loadScript("../../js/plugin/jquery-file/jquery.fileupload.js" , loadDataTableScripts);
-        function loadDataTableScripts() {
-            loadScript("../../js/plugin/jquery-file/jquery.iframe-transport.js" , up_1);
-            function up_1() {
-                loadScript("../../js/plugin/jquery-file/jquery.xdr-transport.js" , up_2);
-            }
-            function up_2() {
-                loadScript("../../js/plugin/jquery-file/jquery.fileupload-process.js" , up_3);
-            }
-            function up_3() {
-                loadScript("../../js/plugin/jquery-file/jquery.fileupload-validate.js" , initFileUpload);
-            }
-        }
-        function initFileUpload()
-        {
-            console.log("initFileUpload");
-            $('#file-upload').fileupload({
-	            url:$.url_root + "/issue/fileAttachementUpload.jspa",
-	            dataType: 'json',
-	            autoUpload: true,
-	            maxFileSize: 10000000,// <1 MB
-            }).on('fileuploadprocessalways', function (e, data) {
-            console.log("fileuploadprocessalways");
-            if(data.files.error){
-                $('#imageError').find("label").empty();
-                if(data.files[0].error=="File is too large"){
-                    $('#imageError').removeClass('hidden').find("label").append("最大上传文件大小为 10.00 MB！");
-                }
-                if(data.files[0].error=="File type not allowed"){
-                    $('#imageError').removeClass('hidden').find("label").append("上传文件类型不对！");
-                }
-            }
-            }).on('fileuploaddone',function (e, data) {
-                console.log("fileuploaddone");
-            	var file=data.result;
-            	$('#imageError').addClass('hidden');
-	            var url =file.url;
-	            var date = new Date();
-	            var createTime =date.getFullYear()+"年"+(date.getMonth()+1)+"月"+date.getDate()+"日 " +date.getHours()+":"+date.getMinutes();
-	            var fileContent ="<tr>"
-                    +"<td><a href='"+$.url_root+"/issue/fileAttachementDownload.jspa?filePath="+url+"&fileName="+file.uploadFileName+"'>"+file.uploadFileName+"</a></td>"
-                    +"<td width='100'>"+file.size+" B</td>"
-                    +"<td width='160'>"+createTime+"</td>"
-                    +"<td width='20' ><a class='deletefile' data-filepath='"+url+"' data-filename='"+file.uploadFileName+"' href='javascript:void(0);'><i class='fa fa-trash-o'></i>"
-                    +"</a></td>"
-                    +"<input type='hidden' name='filePath' value='"+url+"'>"
-                    +"<input type='hidden' name='fileName' value='"+file.uploadFileName+"'>"
-                    +"<input type='hidden' name='mimeType' value="+file.uploadContentType+">"
-                    +"</tr>";
-          		$('#fileAttachements tbody').prepend(fileContent);
-           });
-
-            $('#fileAttachements').on("click", ".deletefile", function(e) {
-                var $that = $(this);
-                $.ajax({
-	                url:$.url_root + "/issue/deleteFileAttachement.jspa",
-		                datatype:"json",
-		                data:{
-		                "filePath": $(this).data("filepath"), //data-filePath
-		                "fileName": $(this).data("filename")
-	                },
-	                success :function(result)
-	                {
-	                    if(result.success) {
-		                    $that.closest("tr").remove();
-		                    $('#fileName').val("");
-	                    }else {
-	                	}
-	                }
-                });
-            });
-        }
+//    loadScript("../../js/plugin/jquery-file/jquery.fileupload.js" , loadDataTableScripts);
+//        function loadDataTableScripts() {
+//            loadScript("../../js/plugin/jquery-file/jquery.iframe-transport.js" , up_1);
+//            function up_1() {
+//                loadScript("../../js/plugin/jquery-file/jquery.xdr-transport.js" , up_2);
+//            }
+//            function up_2() {
+//                loadScript("../../js/plugin/jquery-file/jquery.fileupload-process.js" , up_3);
+//            }
+//            function up_3() {
+//                loadScript("../../js/plugin/jquery-file/jquery.fileupload-validate.js" , initFileUpload);
+//            }
+//        }
+//        function initFileUpload()
+//        {
+//            console.log("initFileUpload");
+//            $('#file-upload').fileupload({
+//	            url:$.url_root + "/issue/fileAttachementUpload.jspa",
+//	            dataType: 'json',
+//	            autoUpload: true,
+//	            maxFileSize: 10000000,// <1 MB
+//            }).on('fileuploadprocessalways', function (e, data) {
+//            console.log("fileuploadprocessalways");
+//            if(data.files.error){
+//                $('#imageError').find("label").empty();
+//                if(data.files[0].error=="File is too large"){
+//                    $('#imageError').removeClass('hidden').find("label").append("最大上传文件大小为 10.00 MB！");
+//                }
+//                if(data.files[0].error=="File type not allowed"){
+//                    $('#imageError').removeClass('hidden').find("label").append("上传文件类型不对！");
+//                }
+//            }
+//            }).on('fileuploaddone',function (e, data) {
+//                console.log("fileuploaddone");
+//            	var file=data.result;
+//            	$('#imageError').addClass('hidden');
+//	            var url =file.url;
+//	            var date = new Date();
+//	            var createTime =date.getFullYear()+"年"+(date.getMonth()+1)+"月"+date.getDate()+"日 " +date.getHours()+":"+date.getMinutes();
+//	            var fileContent ="<tr>"
+//                    +"<td><a href='"+$.url_root+"/issue/fileAttachementDownload.jspa?filePath="+url+"&fileName="+file.uploadFileName+"'>"+file.uploadFileName+"</a></td>"
+//                    +"<td width='100'>"+file.size+" B</td>"
+//                    +"<td width='160'>"+createTime+"</td>"
+//                    +"<td width='20' ><a class='deletefile' data-filepath='"+url+"' data-filename='"+file.uploadFileName+"' href='javascript:void(0);'><i class='fa fa-trash-o'></i>"
+//                    +"</a></td>"
+//                    +"<input type='hidden' name='filePath' value='"+url+"'>"
+//                    +"<input type='hidden' name='fileName' value='"+file.uploadFileName+"'>"
+//                    +"<input type='hidden' name='mimeType' value="+file.uploadContentType+">"
+//                    +"</tr>";
+//          		$('#fileAttachements tbody').prepend(fileContent);
+//           });
+//
+//            $('#fileAttachements').on("click", ".deletefile", function(e) {
+//                var $that = $(this);
+//                $.ajax({
+//	                url:$.url_root + "/issue/deleteFileAttachement.jspa",
+//		                datatype:"json",
+//		                data:{
+//		                "filePath": $(this).data("filepath"), //data-filePath
+//		                "fileName": $(this).data("filename")
+//	                },
+//	                success :function(result)
+//	                {
+//	                    if(result.success) {
+//		                    $that.closest("tr").remove();
+//		                    $('#fileName').val("");
+//	                    }else {
+//	                	}
+//	                }
+//                });
+//            });
+//        }
         loadScript("../../js/validate.cus.js" , validate);
         function validate() {
             validator.bindEvent();  //绑定validate事件
