@@ -456,6 +456,7 @@ function nav_page_height() {
 	//set height
 	if (setHeight > windowHeight) {// if content height exceedes actual window height and menuHeight
 		$.left_panel.css('min-height', setHeight + $.footer_height + 'px');
+        console.log($.left_panel.height());
 		$.root_.css('min-height', setHeight + $.navbar_height + $.footer_height + 'px');
         $.footer.css('top', setHeight + $.navbar_height + $.footer_height -5 + 'px');
 

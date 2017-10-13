@@ -80,7 +80,7 @@ var issueCard = (function() {
         },
 
         initialize: function() {
-            loadScript($.url_root + "../../js/core/issues/issueListCommon.js", function() {
+            loadScript($.url_root + "/js/core/issues/issueListCommon.js", function() {
                 Eipd.namespace("issue.issueCommon").initUsers($.url_root + "/user/getToUsers.jspa", true, i18nRes.global);
             });
             issueCommon.bindingSearchEvent();

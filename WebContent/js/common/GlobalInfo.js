@@ -55,4 +55,4 @@ GlobalInfo.Servlet = new Object();
  * 获取此地址请看@link{businesssupport.util.ECompeaceOperator类}
  * @property baseUrl
  */
-GlobalInfo.Servlet.baseUrl = '';
+GlobalInfo.Servlet.baseUrl = '../../';

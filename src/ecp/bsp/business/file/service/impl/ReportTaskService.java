@@ -119,6 +119,9 @@ public class ReportTaskService {
 		this.validateReportTaskAttachmentByUpload(reportTaskDTO,localFileList);
 		//保存报表任务信息
 		this.saveRepTaskInfo(reportTaskDTO,OperateTypeEnum.MANUALLY);
+		//上传和保存永久附件并保存报表任务附件信息
+		List<AttachmentEntity> list = this.attachmentService.completeFileUpload(localFileList);
+		this.saveReportTaskAttachment(reportTaskDTO.getReportTaskId(), list);
 		//保存报表任务评审信息
 		this.reportTaskReviewService.saveTaskReviewerInfo(reportTaskDTO,ReportReviewTypeEnum.USER_REVIEW);
 		//返回处理结果

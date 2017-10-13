@@ -2,121 +2,21 @@
 <html lang="en-us">
 <head>
 <meta charset="utf-8">
-<!-- Basic Styles -->
-<link href="../../css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
-<link href="../../css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
-<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
-<link href="../../css/smartadmin-production.css" media="screen" rel="stylesheet" type="text/css">
-<link href="../../css/smartadmin-skins.css" media="screen" rel="stylesheet" type="text/css">
-<link href="../../css/dataTables.colVis.css" media="screen" rel="stylesheet" type="text/css">
-<!-- Date Picker -->
-<link href="../../css/datepicker3.css" media="screen" rel="stylesheet" type="text/css">
-<link href="../../css/dataTables.colVis.min.css" media="screen" rel="stylesheet" type="text/css">
-<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
-<link href="../../css/demo.css" media="screen" rel="stylesheet" type="text/css">
-<!-- FAVICONS -->
-<link href="../../img/favicon/favicon.ico" rel="shortcut icon" type="image/x-icon">
-<link href="../../img/favicon/favicon.ico" rel="icon" type="image/x-icon">
-<!-- GOOGLE FONT -->
-<!--<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" rel="stylesheet">-->
+    <!-- Basic Styles -->
+    <link href="../../css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+    <link href="../../css/smartadmin-production.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/smartadmin-skins.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- Common Style -->
+    <link href="../../css/common.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/demo.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/navigation.css" media="screen" rel="stylesheet" type="text/css">
 
-<!-- Specifying a Webpage Icon for Web Clip
-     Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-<link href="../../img/splash/sptouch-icon-iphone.png" rel="apple-touch-icon">
-<link href="../../img/splash/touch-icon-ipad.png" rel="apple-touch-icon" sizes="76x76">
-<link href="../../img/splash/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="120x120">
-<link href="../../img/splash/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="152x152">
-<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
-<meta content="yes" name="apple-mobile-web-app-capable">
-<meta content="black" name="apple-mobile-web-app-status-bar-style">
-<!-- Startup image for web apps -->
-<link href="../../img/splash/ipad-landscape.png"
-      media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)"
-      rel="apple-touch-startup-image">
-<link href="../../img/splash/ipad-portrait.png"
-      media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)"
-      rel="apple-touch-startup-image">
-<link href="../../img/splash/iphone.png" media="screen and (max-device-width: 320px)" rel="apple-touch-startup-image">
-<link href="../../css/common.css" media="screen" rel="stylesheet" type="text/css">
-<style>
-    div.dataTables_filter {
-        left: 0px;
-        position: absolute;
-        top: -52px;
-    }
-    
-    .dtable.dropdown-menu {
-        top: auto;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-    .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
-        margin-left: 0px;
-    }
-
-    .nowrap-inline{
-        /*white-space: nowrap;*/
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        float:left;
-    }
-    .nowrap-inline .checkbox-inline span{
-        /*white-space: nowrap;*/
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        /*overflow: hidden;*/
-    }
-
-    .outline {
-        float:left;
-        width:100%;
-    }
-
-    select.select2 { width: 100%; }
-
-    @-moz-document url-prefix() {
-        .form-control{
-            height: 33px!important;
-        }
-    }
-    
-    /* 针对于Webkit */
-/*    @media screen and (-webkit-min-device-pixel-ratio:0) {
-        .fixed-btn-height {
-            height: 33px!important;
-        }
-
-        .form-control {
-            height: 33px!important;
-        }
-    }*/
-
-    .fixed-btn-height {
-        height: 33px!important;
-    }
-
-    .form-control {
-        height: 33px!important;
-    }
-
-    #tableBtns .ColVis {
-        position: relative;
-        top: 0;
-        right: 0;
-    }
-    
-    #tableBtns button {
-        height: 31px!important;
-        border-radius: 0!important;
-    }
-    
-     /**/
-     table{border-collapse:collapse;border-spacing:0;}
-	.listext th,.listext td{border:solid 1px #ddd;}
-	.rc-handle-container{position:relative;}
-	.rc-handle{position:absolute;width:7px;cursor:ew-resize;*cursor:pointer;margin-left:-3px;}
-</style>
+    <link href="../../css/dataTables.colVis.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- Date Picker -->
+    <link href="../../css/datepicker3.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/dataTables.colVis.min.css" media="screen" rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- Left panel : Navigation area -->
@@ -269,18 +169,6 @@
                         </div>
             		</div>
             		<table id="dt_issues" width="100%;" style="width: 100%;" class="table table-striped table-hover compact fixedTable dt-responsive no-wrap table-bordered">
-            		   <!-- <thead>
-            		        <tr>
-                                <th class="hidden-xs hidden-sm">用户名称</th>
-                                <th class="hidden-xs hidden-sm">性别</th>
-            		            <th>爱好</th>
-                                <th>岗位</th>
-            		            <th>出生日期</th>
-            		            <th class="hidden-xs hidden-sm">职务</th>
-            				    <th>电话号码</th>
-            		        </tr>
-            		    </thead>
-            		    <tbody></tbody>-->
             		</table>
         		</div>
     		<!-- end well -->
@@ -288,11 +176,9 @@
 		</div>
   </div>
 </div>
-    <!--<script src="../js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js"></script>-->
-    <input id="query-Type" type="hidden" value="card"> <!-- the query type, for system issue, the value should be system, for whilebox issue, it 's whilebox -->
-    <input id="query-mode" type="hidden" value="simple"> <!-- the query mode, simple query or combinational query -->
-    <!--<input class="searchKey" type="hidden" value="${searchKey}">--> <!--if the value of element is not empty, that indicate this page is from main page-->
-    <!--<input class="searchValue" type="hidden" value="${searchValue}">--> <!--if the value of element is not empty, that indicate this page is from main page-->
+    <!-- 不能删除，查询所用 -->
+    <!-- the query mode, simple query or combinational query -->
+    <input id="query-mode" type="hidden" value="simple">
     <div id="footer"></div>
 </body>
     <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
@@ -307,56 +193,29 @@
     <script src="../../js/libs/jquery-ui-1.10.3.min.js"></script>
     <script>
         if (!window.jQuery.ui) {
-            document.write('<script src="/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+            document.write('<script src="../../js/libs/jquery-ui-1.10.3.min.js"><\/script>');
         }
     </script>
-    <!-- JS TOUCH : include this plugin for mobile drag / drop touch events
-    <script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
-    <!-- BOOTSTRAP JS -->
-    <script src="../../js/bootstrap/bootstrap.min.js"></script>
-    <!-- JARVIS WIDGETS -->
-    <script src="../../js/smartwidgets/jarvis.widget.min.js"></script>
-    <!-- EASY PIE CHARTS -->
-    <script src="../../js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
-    <!-- SPARKLINES -->
-    <script src="../../js/plugin/sparkline/jquery.sparkline.min.js"></script>
-    <!-- JQUERY VALIDATE -->
-    <script src="../../js/plugin/jquery-validate/jquery.validate.min.js"></script>
-    <!-- JQUERY drag Tab -->
-    <script src="../../js/plugin/jquery-dragTab/jquery.resizableColumns.js"></script>
-    <!-- JQUERY MASKED INPUT -->
-    <script src="../../js/plugin/masked-input/jquery.maskedinput.min.js"></script>
-    <!-- JQUERY BLOCK UI -->
-    <script src="../../js/plugin/jquery-blockui/jquery.blockUI.js"></script>
+    <script src="../../js/common/ECPLoader.js"></script>
     <!-- JQUERY SELECT2 INPUT -->
     <script src="../../js/plugin/select2/select2.min.js"></script>
-    <!-- JQUERY UI + Bootstrap Slider -->
-    <script src="../../js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
-    <!-- browser msie issue fix -->
-    <script src="../../js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
-    <!-- FastClick: For mobile devices -->
-    <script src="../../js/plugin/fastclick/fastclick.js"></script>
     <!-- bootstrap-datepicker-master -->
     <script src="../../js/plugin/bootstrap-datepicker-master/bootstrap-datepicker.js"></script>
     <script src="../../js/plugin/bootstrap-datepicker-master/locales/bootstrap-datepicker.zh-CN.js"></script>
-    <!-- websocket support -->
-    <script src="../../js/plugin/sockjs/sockjs.js"></script>
-    <script src="../../js/plugin/stomp/dist/stomp.js"></script>
-    <!-- lange -->
-    <script src="../../js/lang/zh_CN.js"></script>
-    <script src="../../js/lang/en_US.js"></script>
-    <script src="../../js/core/issues/i18n.js"></script>
-    <!-- MAIN APP JS FILE -->
-    <script src="../../js/app.js"></script>
-    <!-- CUSTOM NOTIFICATION -->
-    <script src="../../js/notification/SmartNotification.min.js"></script>
-    <script src="../../js/core/common.js"></script>
-    <script src="../../js/core/componentConfig.js"></script>
+
+    <script src="../../js/plugin/datatables10/jquery.dataTables.js"></script>
+    <script src="../../js/plugin/datatables10/dataTables.colReorder.js"></script>
+    <script src="../../js/plugin/datatables10/dataTables.colVis.min.js"></script>
+    <script src="../../js/plugin/datatables/ZeroClipboard.js"></script>
+    <script src="../../js/plugin/datatables/media/js/TableTools.min.js"></script>
+    <script src="../../js/plugin/datatables10/DT_bootstrap.js"></script>
+    <script src="../../js/core/issues/messageBox.js"></script>
+
+    <script src="../../js/core/issues/issueCommon.js"></script>
+    <script src="../../js/core/issues/issuesCard.js"></script>
+    <!--<script src="../../js/app2.js"></script>-->
     <!--<script src="../../js/app.js"></script>-->
-    <script src="../../js/resetheight.js"></script>
-    <script src="../../js/common/GlobalInfo.js"></script>
-    <script src="../../js/util/MyJsonUtil.js"></script>
-    <script src="../../js/util/StringUtil.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $("#top").load("../../pages/top.html");
@@ -364,7 +223,13 @@
         $("#footer").load("../../pages/footer.html");
     });
 
-    $(function() {
+    window.onload = function(){
+        App.init();
+        init();
+//        loadScript("../../js/app.js", init);
+    }
+
+    function init() {
         $("#startDate, #endDate").datepicker({
             format: "yyyy-mm-dd",
             minViewMode: "days",
@@ -377,156 +242,10 @@
                 $("#startDate").datepicker("setEndDate", e.date);
             }
         });
-    });
 
-    loadScript("../../js/plugin/x-editable/x-editable.min.js", loadDataTableScripts);
-
-    function loadDataTableScripts() {
-        loadScript("../../js/app.js", dt_0);
-
-        function dt_0() {
-            pageSetUp();
-            loadScript("../../js/plugin/datatables10/jquery.dataTables.js", dt_1);
-        }
-
-//        loadScript("../../js/plugin/datatables10/jquery.dataTables.js", dt_1);
-
-        function dt_1() {
-            loadScript("../../js/core/common.js", dt_2);
-        }
-
-        function dt_2() {
-            loadScript("../../js/plugin/datatables10/dataTables.colReorder.js", dt_3);
-        }
-
-        function dt_3() {
-            loadScript("../../js/plugin/datatables10/dataTables.fixedColumns.js", dt_4);
-        }
-
-        function dt_4() {
-            loadScript("../../js/plugin/datatables10/dataTables.colVis.min.js", dt_5);
-        }
-
-        function dt_5() {
-            loadScript("../../js/plugin/datatables/ZeroClipboard.js", dt_6);
-        }
-
-        function dt_6() {
-            loadScript("../../js/plugin/datatables/media/js/TableTools.min.js", dt_7);
-        }
-
-        function dt_7() {
-            loadScript("../../js/plugin/datatables10/DT_bootstrap.js", tagsinput);
-        }
-
-        function tagsinput() {
-            loadScript("../../js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js", showBox);
-        }
-
-        function showBox() {
-        	loadScript("../../js/core/issues/messageBox.js", i18n);
-        }
-
-        function i18n() {
-          loadScript("../../js/core/issues/i18n.js", common);
-        }
-
-        function common() {
-          loadScript("../../js/core/issues/issueCommon.js", inittable);
-        }
-
-        function inittable() {
-            loadScript("../../js/core/issues/issuesCard.js", init);
-        }
-    }
-
-    function init()
-    {
-      issueCard.initialize();
-      issueCommon.initialize();
-      initTableEvent();
-    }
-
-
-    loadScript('<s:url value="../../js/core/issues/issueLabel.js" />', function() {
-        console.log("initMoreSearchEvent-begin");
-        initMoreSearchEvent();
-    });
-
-    function initMoreSearchEvent()
-    {
-        console.log("initMoreSearchEvent");
-        var labelUrl ="/issue/findDefaultLabelsForCard.jspa";
-        $('#show_moreConditions').click(function(e){
-            $('#moreConditions').slideToggle(100,function(){
-            	if($(this).hasClass("close"))
-            	{
-            		$(this).removeClass('close');
-            		$(this).addClass('open');
-            		issueLabel.initListPage(labelUrl);
-            		return;
-            	}
-
-             	if($(this).hasClass("open"))
-        		{
-        		   $(this).removeClass('open');
-        		   $(this).addClass('close');
-        		}
-            });
-        });
-
-        issueLabel.initBindComponentClickEvent();
-        $('#moreConditions').resize(function() {
-          var div = $('#moreConditions .table div.nin');
-          var sp = $('#moreConditions .table div.nin > span.nout');
-
-          div.each(function(index,ele) {
-              div.width($('#main').width() - 210);
-              var btn_plus =  $(this).parent().find('a.plus');
-              var btn_minus =  $(this).parent().find('a.minus');
-
-              if($(this).width() > $(this).children('span.nout').width()){
-                  btn_plus.hide();
-              } else {
-                  if(div.hasClass('nowrap-inline')) {
-                      btn_plus.show();
-                      btn_minus.hide();
-                  } else {
-                      btn_plus.hide();
-                      btn_minus.show();
-                  }
-              }
-          });
-        });
-
-        $('#moreConditions .table td a.plus').click(function(e){
-//          var div = $('#moreConditions .table div.nowrap-inline');
-          var div = $(this).parent('td').find('div.nin');
-          if(div.hasClass('nowrap-inline')){
-              div.removeClass('nowrap-inline');
-              div.addClass('outline');
-          }else{
-              div.addClass('nowrap-inline');
-              div.removeClass('outline');
-          }
-          $(this).toggle();
-          $(this).next('a.minus').toggle();
-        });
-
-        $('#moreConditions .table td a.minus').click(function(e){
-          var div = $(this).parent('td').find('div.nin');
-          div.removeClass('outline');
-          div.addClass('nowrap-inline');
-          $(this).toggle();
-          $(this).prev('a.plus').toggle();
-        });
-
-        $('#moreConditions table tr:gt(5)').addClass('hidden');
-
-        $('#btnToggleFields').click(function(event) {
-            $('#moreConditions table tr:gt(5)').toggleClass('hidden');
-        });
-
+        issueCard.initialize();
+        issueCommon.initialize();
+        initTableEvent();
     }
 
     function initTableEvent()

@@ -8,45 +8,9 @@
     <meta content="" name="description">
     <meta content="" name="author">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
-    <style>
-        .login-info a.btn {
-            color:#FFFFFF;
-            width:21px;
-            margin: 3px 0 3px 3px;
-        }
-        
-        .login-info a.btn :hover {
-            color: #F3F3F3;
-        }
-
-        .minified  .login-info .shortbtn a.btn{
-            height:10px;
-            width:15px;
-            margin: 1px;
-        }
-
-        .minified .login-info {
-            height: 105px;
-        }
-
-        .minified .login-info a span, .minified .login-info a i {
-            display: block;
-        }
-
-        /* 锁定header, 开始 */
-        #header > :first-child {
-            width: 100% !important;
-        }
-        #header {
-            padding-right: 0 !important;
-        }
-        /* 锁定header, 结束 */
-
-    </style>
 </head>
 
 <body class="fixed-header fixed-ribbon fixed-navigation desktop-detected pace-done">
-
     <!-- HEADER -->
     <!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
     <header id="header">
@@ -75,20 +39,20 @@
 	                <i class="fa fa-envelope fa-icon-animated-vertical"></i>
 	                <span class="badge badge-success bg-color-teal unreadCount">0</span>
 	            </a>
-	
+
 	            <ul id="notifyUL" class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
 	                <li class="dropdown-header">
 	                    <i class="fa fa-envelope-o"></i> <span class="unreadCount">0</span>条消息
 	                </li>
 	                <li>
-	                    <a href="/notification/inbox.jspa"/>">
+	                    <a href="/notification/inbox.jspa"/>
 	                        <i class="fa fa-arrow-right "></i>
 	                        	查看所有消息
 	                    </a>
 	                </li>
 	            </ul>
 	        </li>
-	
+
 	        <li class="light-blue">
 	            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
 	                <img class="nav-user-photo" id="topLogoPath" src=""/>
@@ -105,15 +69,15 @@
 	                        <i class="fa fa-user"></i>个人资料
 	                    </a>
 	                </li>
-	
+
 	                <li>
 	                    <a href="#" data-toggle="modal" data-target="#modifyPasswordModal">
 	                        <i class="fa fa-lg fa-plus"></i>更改密码
 	                    </a>
 	                </li>
-	
+
 	                <li class="divider"></li>
-	
+
 	                <li>
 	                    <a id="logout" href="/logout.jspa">
 	                        <i class="fa fa-power-off"></i>退出
@@ -214,8 +178,8 @@
 </body>
 
 <script type="text/javascript">
-    pageSetUp();
-    loadScript("../js/login.js", initLogin);
+//    pageSetUp();
+    loadScript("../../js/login.js", initLogin);
 
     function initLogin()
     {
@@ -225,7 +189,7 @@
         validateFrom();
     }
 
-    loadScript("../js/lang/zh_CN.js", initSelectLang);
+    loadScript("../../js/lang/zh_CN.js", initSelectLang);
 
     function initSelectLang(){
         common.initSelectLange("zh_CN");

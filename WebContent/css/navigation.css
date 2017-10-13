@@ -1,0 +1,62 @@
+.login-info a.btn {
+    color:#FFFFFF;
+    width:21px;
+    margin: 3px 0 3px 3px;
+}
+
+.login-info a.btn :hover {
+    color: #F3F3F3;
+}
+
+.minified  .login-info .shortbtn a.btn{
+    height:10px;
+    width:15px;
+    margin: 1px;
+}
+
+.minified .login-info {
+    height: 105px;
+}
+
+.minified .login-info a span, .minified .login-info a i {
+    display: block;
+}
+
+/* 锁定header, 开始 */
+#header > :first-child {
+    width: 100% !important;
+}
+#header {
+    padding-right: 0 !important;
+}
+
+.tile ul {
+    border-bottom: 0px solid #423F3F;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+    list-style: none outside none;
+    margin: 0;
+    padding: 0px 0px 10px 0px;
+}
+.tile ul li {
+    display: inline-block;
+    width: auto;
+}
+.tile ul li .jarvismetro-tile {
+    border: 0 none;
+    border-radius: 0;
+    margin: 0 3px 3px;
+}
+.tile ul li .jarvismetro-tile:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.tile ul li .jarvismetro-tile:active,.tile ul li .jarvismetro-tile:focus
+{
+    left: 0;
+    top: 0;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.tile ul .fa-2x {
+    font-size: 1.5em;
+}

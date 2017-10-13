@@ -1,174 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <!-- Basic Styles -->
     <link href="../../css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
     <link href="../../css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
     <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
     <link href="../../css/smartadmin-production.css" media="screen" rel="stylesheet" type="text/css">
     <link href="../../css/smartadmin-skins.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="../../css/dataTables.colVis.css" media="screen" rel="stylesheet" type="text/css">
-    <!-- Date Picker -->
-    <link href="../../css/datepicker3.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="../../css/dataTables.colVis.min.css" media="screen" rel="stylesheet" type="text/css">
-    <!-- File Upload -->
-    <link href="../../css/bootstrap-fileupload.css" media="screen" rel="stylesheet" type="text/css"/>
-    <link href="../../css/jquery.fileupload-ui.css" media="screen" rel="stylesheet" type="text/css"/>
-    <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+
     <link href="../../css/demo.css" media="screen" rel="stylesheet" type="text/css">
-    <!-- FAVICONS -->
-    <link href="../../img/favicon/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <link href="../../img/favicon/favicon.ico" rel="icon" type="image/x-icon">
-    <!-- GOOGLE FONT -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" rel="stylesheet">
-    <!-- Specifying a Webpage Icon for Web Clip
-         Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-    <link href="../../img/splash/sptouch-icon-iphone.png" rel="apple-touch-icon">
-    <link href="../../img/splash/touch-icon-ipad.png" rel="apple-touch-icon" sizes="76x76">
-    <link href="../../img/splash/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="120x120">
-    <link href="../../img/splash/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="152x152">
-    <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
-    <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <!-- Startup image for web apps -->
-    <link href="../../img/splash/ipad-landscape.png"
-          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)"
-          rel="apple-touch-startup-image">
-    <link href="../../img/splash/ipad-portrait.png"
-          media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)"
-          rel="apple-touch-startup-image">
-    <link href="../../img/splash/iphone.png" media="screen and (max-device-width: 320px)" rel="apple-touch-startup-image">
-    <link href="../../css/common.css" media="screen" rel="stylesheet" type="text/css">
-    <link href="/css/summernote.css" rel="stylesheet" type="text/css" >
-    <link href="/css/summernote-bs3.css" rel="stylesheet" type="text/css" >
-<style>
-.well .form-actions {
-  margin-bottom: -13px;
-  margin-left: -19px;
-  margin-right: -19px;
-}
-.radio-inline+.radio-inline,.checkbox-inline+.checkbox-inline {
-  margin-left: 0px;
-}
-.jarviswidget.well .smart-form header {
-  display: block;
-}
-.smart-form .popover {
-  /*padding: 1px; !important*/
-  top: 0;
-}
-.smart-form .popover-title {
-  background-color: #F7F7F7;
-  border-bottom: 1px solid #EBEBEB;
-  border-radius: 5px 5px 0 0;
-  font-size: 13px;
-  font-weight: normal;
-  line-height: 18px;
-  margin: 0;
-  padding: 8px 14px;
-}
-.smart-form .popover-content {
-  padding: 9px 14px;
-}
-.btn {
-  padding: 5.7px 12px;
-}
-
-</style>
-<style>
-.tile ul {
-  border-bottom: 0px solid #423F3F;
-  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
-  list-style: none outside none;
-  margin: 0;
-  padding: 0px 0px 10px 0px;
-}
-.tile ul li {
-  display: inline-block;
-  width: auto;
-}
-.tile ul li .jarvismetro-tile {
-  border: 0 none;
-  border-radius: 0;
-  margin: 0 3px 3px;
-}
-.tile ul li .jarvismetro-tile:hover {
-  color: #FFFFFF;
-  text-decoration: none;
-}
-.tile ul li .jarvismetro-tile:active,.tile ul li .jarvismetro-tile:focus
-  {
-  left: 0;
-  top: 0;
-  color: #FFFFFF;
-  text-decoration: none;
-}
-.tile ul .fa-2x {
-  font-size: 1.5em;
-}
-.alert .tile ul {
-  border-bottom: 0 solid #423F3F;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
-  list-style: none outside none;
-  margin: 0;
-  padding: 0px;
-}
-.alert .jarvismetro-tile {
-  box-shadow: 0 0 1px #FFFFCC inset;
-  height: 60px;
-}
-.timeline-seperator:after {
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
-  content: " ";
-  display: block;
-  margin: -8px 15px 10px 0;
-}
-.timeline-seperator {
-  color: #000000;
-  font-size: inherit display: block;
-  margin: 20px 0 0 8px;
-  text-align: left;
-  cursor: pointer;
-  /*font-weight: bold;*/
-}
-.timeline-seperator>*:first-child {
-  background: none repeat scroll 0 0 #FFFFFF;
-  border: 0px dashed rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  font-size: 13px;
-  padding: 4px 5px;
-}
-
-</style>
+    <link href="../../css/navigation.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/jquery.fileupload-ui.css" media="screen" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <!--<jsp:include page="/pages/top.jsp"></jsp:include>
-    &lt;!&ndash; Left panel : Navigation area &ndash;&gt;
-    &lt;!&ndash; Note: This width of the aside area can be adjusted through LESS variables &ndash;&gt;
-    <jsp:include page="/pages/leftnav.jsp"></jsp:include>-->
     <div id="top"></div>
     <div id="leftnav"></div>
     <div id="main" role="main">
     <div id="ribbon">
-            <!-- breadcrumb -->
-            <ol class="breadcrumb">
-                <li><a href="/dashboard_cardpro.jspa"/>首页</a></li>
-                <li><a href="/issue/issues_list_card.jspa">用户列表</a></li>
-                <li>创建用户</li>
-            </ol>
-            <!-- end breadcrumb -->
-
-            <!-- You can also add more buttons to the
-            ribbon for further usability
-
-            Example below:
-
-            <span class="ribbon-button-alignment pull-right">
-            <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
-            <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
-            <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
-            </span> -->
+        <!-- breadcrumb -->
+        <ol class="breadcrumb">
+            <li><a href="/dashboard_cardpro.jspa"/>首页</a></li>
+            <li><a href="/issue/issues_list_card.jspa">用户列表</a></li>
+            <li>创建用户</li>
+        </ol>
     </div>
   <div id="content">
   <!-- row -->
@@ -178,183 +33,6 @@
     <input id="labels" type="hidden" name="issueDTO.beanString">
     <input id="labelUrl" type="hidden" value="/issue/findDefaultLabelsForCard.jspa">
     <input id="draftFlag" type="hidden" name="issueDTO.isSavedToDraft" value="false">
-    <div class="row issueBody issueBodyCardPro">
-      <!-- widget grid -->
-      <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <!-- Widget ID (each widget will need unique ID)-->
-        <div class="jarviswidget" id="wid-id-1"
-          data-widget-colorbutton="false" data-widget-editbutton="false"
-          data-widget-fullscreenbutton="false"
-          data-widget-deletebutton="false">
-          <header>
-            <h2>
-              <span class="font-md text-primary">基本信息</span>
-            </h2>
-          </header>
-          <!-- widget div-->
-          <div>
-            <!-- widget edit box -->
-            <div class="jarviswidget-editbox">
-              <!-- This area used as dropdown edit box -->
-            </div>
-            <!-- end widget edit box -->
-            <div class="banner"></div><!--<%-- 需要一个容纳提示语的div.banner --%>-->
-            <!-- widget content -->
-            <div class="widget-body">
-                <div class="row">
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 tile">
-                    <div class="form-group">
-                        <label class="control-label">
-                        姓名
-                        </label>
-                          <div>
-                            <input id="projectSelector" class="required-validation" name="issueDTO.cardProjectDTO.name" style="width: 100%" type="hidden" data-max="200">
-                          </div>
-                      <div class="note">提示</div>
-                    </div>
-                  </div>
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <div class="form-group changed-form">
-                        <label class="control-label">
-                             籍贯
-                        </label>
-                        <div>
-                          <input class="form-control required-validation" name="issueDTO.cardProjectDTO.code" type="text" placeholder="project.code" data-key="code"/>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <div class="form-group searchRemoved">
-                      <label>性别</label>
-                      <select id="project-type" name="issueDTO.cardProjectDTO.projectType" style="width: 100%" class="select2" data-placeholder="project.type">
-                        <option></option>
-                        <option value="1" selected>男</option>
-                        <option value="2">女</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <div class="form-group searchRemoved">
-                        <label>职务</label>
-                        <select id="project-level" name="issueDTO.cardProjectDTO.projectLevel" style="width: 100%" class="select2" data-placeholder="project.level">
-                          <option></option>
-                          <option value="1" selected>工程师</option>
-                          <option value="2">主管</option>
-                          <option value="3">经理</option>
-                        </select>
-                    </div>
-                  </div>
-                </div>
-              <div id="project_add_content" style="display: none;">
-                <hr style="margin: 0 0 10px 0;">
-                  <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.requirementCode</label> <input type="text"
-                          name="issueDTO.cardProjectDTO.requirementCode"
-                          class="form-control required-validation" placeholder="project.requirementCode" />
-                      </div>
-                    </div>
-                    <div class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.chip.type</label> <input type="text"
-                          name="issueDTO.cardProjectDTO.icModel" class="form-control required-validation"
-                          placeholder="project.chip.type"/>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.cos.version</label> <input type="text"
-                          name="issueDTO.cardProjectDTO.cosVersion"
-                          class="form-control required-validation" placeholder="project.cos.version" />
-                      </div>
-                    </div>
-                    <div class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.productionProcedure</label> <input type="text"
-                          name="issueDTO.cardProjectDTO.productionProcedure"
-                          class="form-control required-validation" placeholder="project.productionProcedure" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.cos.developer</label>
-                        <input type="text"
-                          name="issueDTO.cardProjectDTO.cosDeveloper"
-                          class="form-control required-validation" placeholder="project.cos.developer" />
-                      </div>
-                    </div>
-                    <section class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.productionEquipment</label> <input type="text"
-                          name="issueDTO.cardProjectDTO.productionEquipment"
-                          class="form-control required-validation" placeholder="project.productionEquipment" />
-                      </div>
-                    </section>
-                  </div>
-                  <div class="row">
-                    <section class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.customDeveloper</label>
-                        <input type="text"
-                          name="issueDTO.cardProjectDTO.customDeveloper"
-                          class="form-control required-validation" placeholder="project.customDeveloper" />
-                      </div>
-                    </section>
-                    <section class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.app.developer</label>
-                        <input type="text"
-                          name="issueDTO.cardProjectDTO.appDeveloper"
-                          class="form-control required-validation" placeholder="project.app.developer" />
-                      </div>
-                    </section>
-                  </div>
-                  <div class="row">
-                    <section class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.usecase.designer</label>
-                        <input type="text" name="issueDTO.cardProjectDTO.ucDesigner"
-                          class="form-control required-validation" placeholder="project.usecase.designer" />
-                      </div>
-                    </section>
-                    <section class="col col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <div class="form-group">
-                        <label> project.tester</label>
-                        <input type="text" name="issueDTO.cardProjectDTO.tester"
-                          class="form-control required-validation" placeholder="project.tester" />
-                      </div>
-                    </section>
-                  </div>
-              </div>
-              <!-- widget footer -->
-              <div class="widget-footer text-right">
-                <span class="onoffswitch-title">
-                    <i class="fa fa-eye "></i>显示全部
-                </span>
-                <span class="onoffswitch">
-                    <input id="myonoffswitch" class="onoffswitch-checkbox" type="checkbox" name="onoffswitch">
-                    <label class="onoffswitch-label" for="myonoffswitch">
-                        <span class="onoffswitch-inner" data-swchoff-text="NO" data-swchon-text="YES"></span>
-                        <span class="onoffswitch-switch"></span>
-                    </label>
-                </span>
-              </div>
-              <!-- end widget footer -->
-            </div>
-            <!-- end widget content -->
-          </div>
-          <!-- end widget div -->
-        </div>
-        <!-- end widget -->
-      </section>
-    </div>
     <!-- end row -->
     <!-- row -->
     <div class="row issueBody issueBodyCardPro">
@@ -379,7 +57,7 @@
             <div class="widget-body widget-hide-overflow">
               <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  <span class="font-md text-primary">其他信息</span>
+                  <span class="font-md text-primary">报表任务信息</span>
                 </div>
               </div>
               <hr class="simple">
@@ -388,22 +66,13 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tile">
                       <div class="row">
-                          <div class="col-sm-6">
+                          <div class="col-sm-12">
                               <div class="form-group">
-                                  <label class=" control-label">年龄</label>
-                                  <div class="input-icon-right">
-                                      <input type="text" name="issueDTO.timeEstimate"
-                                             class="form-control" /> <i class="fa fa-clock-o"></i>
-                                  </div>
-                                  <div class="note">提示</div>
-                              </div>
-                          </div>
-                          <div class="col-sm-6">
-                              <div class="form-group">
-                                  <label class="control-label">出生日期</label>
-                                  <div class="input-group">
-                                      <input type="text" name="issueDTO.dueDate" class="form-control datepicker" data-date-format="yyyy-mm-dd" placeholder="issue.fix.deadline">
-                                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                  <label class="control-label">
+                                      策略名称
+                                  </label>
+                                  <div>
+                                      <input id="taskStrategyId" class="required-validation" name="taskStrategyId" style="width: 100%" type="hidden" data-max="200">
                                   </div>
                               </div>
                           </div>
@@ -411,11 +80,10 @@
                       <div class="row">
                         <div class="col-sm-12">
                           <div class="form-group">
-                            <label class="control-label">简介</label>
+                            <label class="control-label">报表命名规则描述</label>
                             <div>
-                                <textarea class="form-control required-validation" rows="3" name="issueDTO.position" style="resize: none;"></textarea>
+                                <textarea class="form-control required-validation" rows="3" name="taskStrategyDiscribe" style="resize: none;"></textarea>
                             </div>
-                            <div class="note">提示</div>
                           </div>
                         </div>
                       </div>
@@ -427,11 +95,7 @@
                     </div>
                       <div class="row">
                         <div class="smart-form col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div>
-                                <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
-                                </form>
-                            </div>
-                              <!--<div class="hidden" id="imageError"><label style="font-size:10px; color:#DE1F00;"></label></div>-->
+                              <div class="hidden" id="imageError"><label style="font-size:10px; color:#DE1F00;"></label></div>
                               <!--<label class="input input-file" for="file">-->
                                 <!--<div class="button">-->
                                   <!--<input id="file-upload" type="file" name="upload" multiple="true">-->
@@ -440,23 +104,32 @@
                                   <!--<input type="text" id="fileName" readonly="" placeholder="选择文件">-->
                               <!--</label>-->
                               <!--<div class="note">提示</div>-->
+                            <span class="btn btn-success fileinput-button">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>选择文件</span>
+                                <!-- The file input field used as target for the file upload widget -->
+                                <input id="file-upload" type="file" name="files[]" multiple>
+                            </span>
                         </div>
-                        </div>
-                      </div>
+                    </div>
                     <br>
-                    <!--<div class="chat-body no-padding profile-message">-->
-                      <!--<table id="fileAttachements" class="table table-hover table-noborder">-->
-                        <!--<tbody>-->
-                        <!--</tbody>-->
-                      <!--</table>-->
-                      <!--<div id="fileAttachements_tmp" style="display: none">-->
-                      <!--</div>-->
-                    <!--</div>-->
+                    <div class="chat-body no-padding profile-message">
+                      <table id="fileAttachements" class="table table-hover table-noborder">
+                        <tbody>
+                            <th>文件名</th>
+                            <th>大小</th>
+                            <th>时间</th>
+                            <th>操作</th>
+                        </tbody>
+                      </table>
+                      <div id="fileAttachements_tmp" style="display: none">
+                      </div>
+                    </div>
                   </div>
+
                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <hr>
                     <div class="pull-right form-action-bar">
-                        <a id="btn-draft" title="保存缺陷为草拟状态，在编辑页面提交" href="javascript:void(0);" class="btn btn-primary" data-save="true"><i class="fa fa-save"></i>&nbsp; 保存</a>&nbsp;&nbsp;
                         <a id="btn-save" title="提交该缺陷" href="javascript:void(0);" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i>&nbsp; 提交</a>&nbsp;&nbsp;
                         <a title="取消提交" href="/issue/issues_list_card.jspa" class="btn btn-default"><i class="fa fa-ban"></i>&nbsp; 取消</a>
                     </div>
@@ -471,8 +144,11 @@
           <!-- end widget div -->
         </div>
         <!-- end widget -->
-      </article>
+          </article>
     </div>
+    <!--创建人id和name  value="上传报表命名规则"  readonly="readonly"-->
+    <input type="hidden" name="paaEmployeeId" id="paaEmployeeId"/>
+    <input type="hidden" name="paaUsername" id="paaUsername" />
   </form>
   <!-- end row -->
   </div>
@@ -480,610 +156,49 @@
 <input id="typeIndicator" type="hidden" value="card">
 <div id="footer"></div>
 </body>
+
 <script data-pace-options='{ "restartOnRequestAfter": true }' src="../../js/plugin/pace/pace.min.js"></script>
-
 <script src="../../js/libs/jquery-2.0.2.min.js"></script>
-
 <script>
     if (!window.jQuery) {
         document.write('<script src="../../js/libs/jquery-2.0.2.min.js"><\/script>');
     }
 </script>
-
 <script src="../../js/libs/jquery-ui-1.10.3.min.js"></script>
 <script>
     if (!window.jQuery.ui) {
-        document.write('<script src="/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+        document.write('<script src="../../js/libs/jquery-ui-1.10.3.min.js"><\/script>');
     }
 </script>
 
-<!-- JS TOUCH : include this plugin for mobile drag / drop touch events
-<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
-<!-- BOOTSTRAP JS -->
-<script src="../../js/bootstrap/bootstrap.min.js"></script>
-<!-- JARVIS WIDGETS -->
-<script src="../../js/smartwidgets/jarvis.widget.min.js"></script>
-<!-- EASY PIE CHARTS -->
-<script src="../../js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
-<!-- SPARKLINES -->
-<script src="../../js/plugin/sparkline/jquery.sparkline.min.js"></script>
-<!-- JQUERY VALIDATE -->
-<script src="../../js/plugin/jquery-validate/jquery.validate.min.js"></script>
-<!-- JQUERY drag Tab -->
-<script src="../../js/plugin/jquery-dragTab/jquery.resizableColumns.js"></script>
-<!-- JQUERY MASKED INPUT -->
-<script src="../../js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+<script src="../../js/common/ECPLoader.js"></script>
 <!-- JQUERY BLOCK UI -->
 <script src="../../js/plugin/jquery-blockui/jquery.blockUI.js"></script>
 <!-- JQUERY SELECT2 INPUT -->
 <script src="../../js/plugin/select2/select2.min.js"></script>
 <!-- JQUERY UI + Bootstrap Slider -->
 <script src="../../js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
-<!-- browser msie issue fix -->
-<script src="../../js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
-<!-- FastClick: For mobile devices -->
-<script src="../../js/plugin/fastclick/fastclick.js"></script>
-<!-- bootstrap-datepicker-master -->
-<script src="../../js/plugin/bootstrap-datepicker-master/bootstrap-datepicker.js"></script>
-<script src="../../js/plugin/bootstrap-datepicker-master/locales/bootstrap-datepicker.zh-CN.js"></script>
-<!-- websocket support -->
-<script src="../../js/plugin/sockjs/sockjs.js"></script>
-<script src="../../js/plugin/stomp/dist/stomp.js"></script>
-<!-- lange -->
-<script src="../../js/lang/zh_CN.js"></script>
-<script src="../../js/lang/en_US.js"></script>
 <script src="../../js/core/issues/i18n.js"></script>
-<!-- MAIN APP JS FILE -->
-<script src="../../js/app.js"></script>
-<!-- FILE UPLOAD-->
+<script src="../../js/plugin/bootbox/bootbox.js"></script>
+
 <script src="../../js/plugin/jquery-file/jquery.fileupload.js"></script>
-<!-- The File Upload file processing plugin -->
-<script src="../../js/plugin/jquery-file/jquery.fileupload-fp.js"></script>
-<!-- The File Upload user interface plugin -->
-<script src="../../js/plugin/jquery-file/jquery.fileupload.ui.js"></script>
-<!-- CUSTOM NOTIFICATION -->
-<script src="../../js/notification/SmartNotification.min.js"></script>
-<script src="../../js/core/common.js"></script>
-<script src="../../js/core/componentConfig.js"></script>
-<script src="../../js/resetheight.js"></script>
-<!--<script src="../../js/core/attachmentPlugin.js"></script>-->
-<script src="../../js/common/GlobalInfo.js"></script>
-<script src="../../js/util/MyJsonUtil.js"></script>
-<script src="../../js/util/StringUtil.js"></script>
+<script src="../../js/plugin/jquery-file/jquery.iframe-transport.js"></script>
+<script src="../../js/plugin/jquery-file/jquery.xdr-transport.js"></script>
+<script src="../../js/plugin/jquery-file/jquery.fileupload-process.js"></script>
+<script src="../../js/plugin/jquery-file/jquery.fileupload-validate.js"></script>
+
+<script src="../../js/business/user/userEdit.js"></script>
+
 <script type="text/javascript">
-//    $.get("../../pages/top.html",function(data){
-//        $("#top").html(data);
-//    });
-//    $.get("../../pages/leftnav.html",function(data){
-//        $("#leftnav").html(data);
-//    });
-//    $.get("../../pages/footer.html",function(data){
-//        $("#footer").html(data);
-//    });
-  // DO NOT REMOVE : GLOBAL FUNCTIONS!
-//	pageSetUp();
-
-	loadScript("../../js/plugin/bootstrap-wizard/jquery.bootstrap.wizard.min.js", runBootstrapWizard);
-
-	function runBootstrapWizard() {
-	$('#bootstrap-wizard-1').bootstrapWizard(
-	    {
-	      'tabClass' : 'form-wizard',
-	      'onNext' : function(tab, navigation, index) {
-	        var $valid = $("#wizard-1").valid();
-	        if (!$valid) {
-	          $validator.focusInvalid();
-	          return false;
-	        } else {
-	          $('#bootstrap-wizard-1').find('.form-wizard')
-	              .children('li').eq(index - 1).addClass(
-	                  'complete');
-	          $('#bootstrap-wizard-1').find('.form-wizard')
-	              .children('li').eq(index - 1).find('.step')
-	              .html('<i class="fa fa-check"></i>');
-	        }
-	      }
-	    });
-	}
-
-	//Load fuelux wizard dependency
-
-	loadScript("../../js/plugin/fuelux/wizard/wizard.js", fueluxWizard);
-	function fueluxWizard() {
-		var wizard = $('.wizard').wizard();
-		wizard.on('finished', function(e, data) {
-			$.smallBox({
-				title : "Congratulations! Your form was submitted",
-				content : "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
-				color : "#5F895F",
-				iconSmall : "fa fa-check bounce animated",
-				timeout : 4000
-			});
-		});
-	}
-  // PAGE RELATED SCRIPTS
-	loadScript("../../js/plugin/dropzone/dropzone.min.js" , startDropzone);
-	function startDropzone() {
-		Dropzone.autoDiscover = false;
-		$("#mydropzone").dropzone({
-		    addRemoveLinks : true,
-		    maxFilesize : 0.5,
-		    dictResponseError : 'Error uploading file!'
-		});
-	}
-  /*
-   * SUMMERNOTE EDITOR
-   */
-    loadScript("../../js/plugin/summernote/summernote.js" , summernoteStart);
-    function summernoteStart() {
-        loadScript("../../js/lang/summernote-zh-CN.js" , function() {
-            $('.summernote').summernote($.extend(Eipd.namespace("config").summernote, {
-                onkeyup: function(e) {
-                    saveNotes();
-                    // validateSummernote();
-                }
-            }));
-        });
-    }
-
-    /*
-     * attachmentPlugin
-     */
-    loadScript("../../js/core/attachmentPlugin.js" , createAttachmentPlugin);
-    function createAttachmentPlugin() {
-        $('#fileupload').attachmentPlugin({
-        });
-
-        $('#fileupload').fileupload({
-            myUrl: SMController.getUrl({controller:'controllerProxy',method:'callBackByRequest'
-                ,proxyClass:'attachmentController',proxyMethod:'upload',jsonString:''})
-        });
-    }
-
-    function saveNotes() {
-    	$(".summernote").val($(".summernote").code());
-    }
-
-    function validateSummernote() {
-        $('.summernote').valid();
-    }
-
-    $('#chooseLable-CardPro, #cancleChooseLable-CardPro').click(function(e) {
-    	$('#ad-container-CardPro').toggleClass('open');
-    	e.preventDefault();
-    });
-
-    // 显示全部信息，yesOrNo按钮绑定
-    $('#myonoffswitch').click(function(e) {
-	    var $btn_add_project = $("#project_add_content");
-	    $btn_add_project.slideToggle(function() {
-	        if ($btn_add_project.is(':visible')) {
-	        	$('#myonoffswitch').attr('checked', true);
-	        } else {
-	        	$('#myonoffswitch').attr('checked', false);
-	        }
-	    });
-    });
-
-    $('#file-upload').change(function(e) {
-        console.log("upload_change");
-	    $(this).parent().next().val($(this).val());
-	    e.preventDefault();
-    });
-
-
-    $('a.issueType').click(function() {
-	    if ($(this).hasClass('selected')) {
-	        return;
-	    }
-	    // 切换被点击元素的CSS
-	    $.each($('a.issueType'), function(k, v) {
-	        $(v).removeClass('selected');
-	    });
-	    $(this).addClass('selected');
-	    // 切换不同类型对应的表单字段
-	    $.each($('div.issueBody'), function(k, v) {
-	        $(v).toggleClass('hidden', true);
-	    });
-	    var id = $(this).attr('id').replace('issueType', '');
-	    $('.issueBody' + id).removeClass('hidden');
-    });
-
     $(document).ready(function() {
         $("#top").load("../../pages/top.html");
         $("#leftnav").load("../../pages/leftnav.html");
         $("#footer").load("../../pages/footer.html");
-
-        loadScript("../../js/app.js", function(){
-            pageSetUp();
-        });
-            loadScript("/js/plugin/form/form.bar.js" , function() {
-                $.formbar();
-            });
-
-            common.initSelectLange("zh_CN");
-
-            $("#projectSelector").select2({
-                placeholder: "请选择或者输入一个项目名称",
-                allowClear: true,
-                maximumInputLength: 200,
-
-                createSearchChoice : function(term, data) { //if not found, then add
-                    return {
-                        id : term,
-                        text : term
-                    };
-                },
-
-                formatInputTooLong: function (input, max) {
-                    var n = input.length - max;
-                    return "项目名称过长，至多允许200个字符，" + "请删掉" + n + "个字符";
-                },
-
-                query: function(options) { //search
-                    var realParams = {
-                        pageSize: 5,  //默认每次显示5条记录
-                        pageNum: options.page,
-                        "projectQueryCondition.type" : "card",
-                        "projectQueryCondition.name" : options.term
-                    };
-
-                    $.ajax({
-                        url : $.url_root + "/project/displayProjects.jspa",
-                        dataType : "json",
-                        type: "POST",
-                        data : realParams,
-
-                        success : function(data) {
-                            checkResult(data, {
-                                showBox: false,
-                                callback: function() {
-                                    options.callback(data.json);
-                                }
-                            });
-                        }
-                    });
-                }
-            }).on('select2-selected', function(e) { //fire when selected the option
-                var pid = e.choice.pid,
-                    prefix = "issueDTO.cardProjectDTO.";
-
-                $("#pid").val("");  // empty the value first
-
-                if (pid) {
-                    $("#pid").val(pid);
-
-                    $.ajax({
-                        "url" : $.url_root + "/project/findCardProject.jspa",
-                        "async": false,
-                        "data" : {
-                            "pid" : pid
-                        },
-                        "dataType" : "json",
-
-                        success : function(data) {
-                            if(data.success) {
-                                data = data.cardProjectDTO;
-
-                                validator.validate(data);  //验证指定数据是否被改变
-                                $("#project-type").select2("val", data.projectType);
-                                $("#project-level").select2("val", data.projectLevel);
-
-                                for (var key in data) {
-                                    if(data.hasOwnProperty(key)) {
-                                        var $input = $("input[type='text'][name='" + prefix + key + "']");
-                                        if ($input.length > 0) {
-                                            if (key === "code") {
-                                                $input.val("_null_1_1_1_a_s_c_i_i"); // @HACK
-                                                $("#create-issue-form").valid();
-                                                $input.val(data[key]);
-                                                continue;
-                                            }
-                                            $input.val(data[key]);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    });
-                } else {    // 手动输入项目名称，则情况项目编号域。
-                    $("input[data-key='code']").val("");
-                    validator.validate(); //    reset the validation
-                }
-
-                $("#create-issue-form").valid();
-            }).on('select2-clearing', function(e) {
-                $(".changed-form").find("input.changed").val("");
-                validator.cleanValidation();
-            });
-
-            // 关注者
-//            $(".watcher").select2({
-//                multiple: true,
-//                ajax: {
-//                    url: $.url_root + "/user/getToUsers.jspa",
-//                    dataType: 'json',
-//                    quietMillis: 300,
-//                    type: "POST",
-//
-//                    data: function(term, page) {
-//                        return {
-//                            "userQueryConditionDTO.name": term,
-//                            "userQueryConditionDTO.realName": term,
-//                            pageNum: (page - 1 ) * 5 + 1,
-//                            pageLen: 5
-//                        };
-//                    },
-//
-//                    results: function(resp, page) {
-//                        return resp.json;
-//                    }
-//                },
-//
-//                formatResult: function(object, container, query) {
-//                    var realName = object.text || "未填写";
-//                    return "登录名：" + object.extraInfos.ln + "<br> 用户名：" + realName;
-//                },
-//
-//                formatSelection : function(object, container){
-//                    var realName = object.text == undefined ? "" : object.text;
-//                    var html = " " + realName;
-//                    html += (object.extraInfos.ln ?  " [ " + object.extraInfos.ln + " ]" : "");
-//                    return html;
-//                },
-//
-//
-//                dropdownCssClass: "bigdrop",
-//
-//                escapeMarkup: function(m) { return m; }
-//            });
-
-            //load the reporters and receivers, users select2 handler
-//			$("#receiverSelector").select2({
-//                allowClear: true,
-//                ajax: {
-//                    url: $.url_root + "/user/findUsersByManagerRole.jspa",
-//                    dataType: 'json',
-//                    quietMillis: 300,
-//
-//                    data: function (term, page) {
-//                        return {
-//                            "userQueryConditionDTO.name": term,
-//                            "userQueryConditionDTO.realName": term,
-//                            iDisplayStart: (page-1)*10 + 1,
-//                            iDisplayLength: 10
-//                        };
-//                    },
-//
-//                    results: function (data, page) {
-//                        var more = (page * 10) < data.totalRecords; // whether or not there are more results available
-//                        var realNames = new Array();
-//                        for (var i = 0; i < data.totalDisplayRecords; i++) {
-//                            realNames.push({id: data.json.results[i].id, text: data.json.results[i].text, realName: data.json.results[i].realName});
-//                        }
-//
-//                        return {results: realNames,more:more};
-//                    }
-//                },
-//                formatResult: function(object, container, query) {
-//                    var realName = object.realName == undefined ? "<br /> 用户名：" : "<br />" + "用户名：" + object.realName;
-//                    var html = "登录名：" + object.text;
-//                    html += realName;
-//                    return html;
-//                },
-//
-//                formatSelection : function(object, container){
-//                    var realName = object.realName == undefined ? "" : object.realName;
-//                    var html = " " + realName;
-//                    html += (object.id ?  " [ " + object.id + " ]" : "");
-//                    return html;
-//                },
-//
-//                dropdownCssClass: "bigdrop", // apply css that makes the dropdown taller
-//                escapeMarkup: function (m) { return m; } // we do not want to escape markup since we are displaying html in results
-//
-//            }).on('select2-selected', function(e) {
-//                $("#create-issue-form").valid();
-//            });
-//
-//            $("#fixedUserSelector").select2({
-//                placeholder: "Please select one",
-//                //minimumInputLength: 1,
-//                allowClear: true,
-//                ajax: {
-//                    url: $.url_root + "/user/findUsersByDevelopRole.jspa",
-//                    dataType: 'json',
-//                    quietMillis: 300,
-//
-//                    data: function (term, page) {
-//                        return {
-//                            "userQueryConditionDTO.name": term,
-//                            "userQueryConditionDTO.realName": term,
-//                            iDisplayStart: (page-1)*10,
-//                            iDisplayLength: 10
-//                        };
-//                    },
-//
-//                    results: function (data, page) {
-//                        var more = (page * 10) < data.totalRecords; // whether or not there are more results available
-//                        var realNames = new Array();
-//                        for (var i = 0; i < data.totalDisplayRecords; i++) {
-//                            realNames.push({id: data.json.results[i].id, text: data.json.results[i].text, realName: data.json.results[i].realName});
-//                        }
-//
-//                        return {results: realNames,more:more};
-//                    }
-//                },
-//                formatResult: function(object, container, query) {
-//                    var realName = object.realName == undefined ? "<br /> 用户名：" : "<br />" + "用户名：" + object.realName;
-//                    var html = "登录名：" + object.text;
-//                    html += realName;
-//                    return html;
-//                },
-//
-//                formatSelection : function(object, container){
-//                	var realName = object.realName == undefined ? "" : object.realName;
-//                	var html = " " + realName;
-//                    html += (object.id ?  " [ " + object.id + " ]" : "");
-//                    return html;
-//                },
-//
-//                dropdownCssClass: "bigdrop", // apply css that makes the dropdown taller
-//                escapeMarkup: function (m) { return m; } // we do not want to escape markup since we are displaying html in results
-//
-//            }).on('select2-selected', function(e) {
-//                $("#create-issue-form").valid();
-//            });
-
-            var itemsMap = {
-                audit: "true",
-                no_audit: "false"
-            };
-
-            (function(itemsMap) {
-                $.ajax({
-                    url: $.url_root + "/issue/loadItems.jspa",
-                    dataType: 'json',
-                    type: "POST",
-                    async: false,
-                    data: {
-                        searchKey: $("#typeIndicator").val()
-                    },
-
-                    success: function(result) {
-                        checkResult(result, {
-                            showBox: false,
-
-                            callback: function() {
-                                var data = result.items,
-                                    len = data.length,
-                                    dataSource = [],
-                                    i;
-
-                                for (i = 0; i < len; i++) {
-                                    dataSource.push({id: itemsMap[data[i]], text: i18nRes.issue.auditItem[data[i]]});
-                                }
-
-//                                $("#isApprovedSelector").select2({
-//                                    data: dataSource
-//                                }).on('select2-selected', function(e) { //fire when selected the option
-//                                    var isApproved = e.choice.id;
-//                                    if (isApproved === itemsMap.no_audit) {
-//                                        $("#fixedUser_div").removeClass("hidden");
-//                                        $("#fixedUserSelector").addClass("required-validation");
-//                                    } else {
-//                                        $("#fixedUser_div").addClass("hidden");
-//                                        $("#fixedUserSelector").select2("val", "");
-//                                        $("#fixedUserSelector").removeClass();
-//                                    }
-//                                });
-//
-//                                $(".searchRemoved .select2-search").remove();
-//
-//                                if (dataSource[0]) {
-//                                    var curSelected = dataSource[0].id;
-//                                    $("#isApprovedSelector").select2("val", curSelected);
-//
-//                                    if (curSelected === itemsMap.no_audit) {
-//                                        $("#fixedUser_div").removeClass("hidden");
-//                                        $("#fixedUserSelector").addClass("required-validation");
-//                                    }
-//                                }
-                            }
-                        }
-                        );
-                    }
-                });
-            }(itemsMap));
-
-        loadScript("../../js/core/issues/issuesValidate.js" , function() {
-            issueValidate.initIssueCardValidate();
-        });
-
    });
-    loadScript("../../js/core/issues/issueCommon.js" , loadInitIssueScript);
 
-    function loadInitIssueScript() {
-        loadScript("../../js/core/issues/issueLabel.js" , function() {
-            issueLabel.initialize();
-        });
+    window.onload = function(){
+        App.init();
+        userEdit.init();
     }
-
-//    loadScript("../../js/plugin/jquery-file/jquery.fileupload.js" , loadDataTableScripts);
-//        function loadDataTableScripts() {
-//            loadScript("../../js/plugin/jquery-file/jquery.iframe-transport.js" , up_1);
-//            function up_1() {
-//                loadScript("../../js/plugin/jquery-file/jquery.xdr-transport.js" , up_2);
-//            }
-//            function up_2() {
-//                loadScript("../../js/plugin/jquery-file/jquery.fileupload-process.js" , up_3);
-//            }
-//            function up_3() {
-//                loadScript("../../js/plugin/jquery-file/jquery.fileupload-validate.js" , initFileUpload);
-//            }
-//        }
-//        function initFileUpload()
-//        {
-//            console.log("initFileUpload");
-//            $('#file-upload').fileupload({
-//	            url:$.url_root + "/issue/fileAttachementUpload.jspa",
-//	            dataType: 'json',
-//	            autoUpload: true,
-//	            maxFileSize: 10000000,// <1 MB
-//            }).on('fileuploadprocessalways', function (e, data) {
-//            console.log("fileuploadprocessalways");
-//            if(data.files.error){
-//                $('#imageError').find("label").empty();
-//                if(data.files[0].error=="File is too large"){
-//                    $('#imageError').removeClass('hidden').find("label").append("最大上传文件大小为 10.00 MB！");
-//                }
-//                if(data.files[0].error=="File type not allowed"){
-//                    $('#imageError').removeClass('hidden').find("label").append("上传文件类型不对！");
-//                }
-//            }
-//            }).on('fileuploaddone',function (e, data) {
-//                console.log("fileuploaddone");
-//            	var file=data.result;
-//            	$('#imageError').addClass('hidden');
-//	            var url =file.url;
-//	            var date = new Date();
-//	            var createTime =date.getFullYear()+"年"+(date.getMonth()+1)+"月"+date.getDate()+"日 " +date.getHours()+":"+date.getMinutes();
-//	            var fileContent ="<tr>"
-//                    +"<td><a href='"+$.url_root+"/issue/fileAttachementDownload.jspa?filePath="+url+"&fileName="+file.uploadFileName+"'>"+file.uploadFileName+"</a></td>"
-//                    +"<td width='100'>"+file.size+" B</td>"
-//                    +"<td width='160'>"+createTime+"</td>"
-//                    +"<td width='20' ><a class='deletefile' data-filepath='"+url+"' data-filename='"+file.uploadFileName+"' href='javascript:void(0);'><i class='fa fa-trash-o'></i>"
-//                    +"</a></td>"
-//                    +"<input type='hidden' name='filePath' value='"+url+"'>"
-//                    +"<input type='hidden' name='fileName' value='"+file.uploadFileName+"'>"
-//                    +"<input type='hidden' name='mimeType' value="+file.uploadContentType+">"
-//                    +"</tr>";
-//          		$('#fileAttachements tbody').prepend(fileContent);
-//           });
-//
-//            $('#fileAttachements').on("click", ".deletefile", function(e) {
-//                var $that = $(this);
-//                $.ajax({
-//	                url:$.url_root + "/issue/deleteFileAttachement.jspa",
-//		                datatype:"json",
-//		                data:{
-//		                "filePath": $(this).data("filepath"), //data-filePath
-//		                "fileName": $(this).data("filename")
-//	                },
-//	                success :function(result)
-//	                {
-//	                    if(result.success) {
-//		                    $that.closest("tr").remove();
-//		                    $('#fileName').val("");
-//	                    }else {
-//	                	}
-//	                }
-//                });
-//            });
-//        }
-        loadScript("../../js/validate.cus.js" , validate);
-        function validate() {
-            validator.bindEvent();  //绑定validate事件
-    	}
 </script>
 </html>

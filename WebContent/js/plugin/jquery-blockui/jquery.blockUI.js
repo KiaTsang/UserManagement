@@ -284,7 +284,7 @@
 			}
 
 			$(el).data('blockUI.onUnblock', opts.onUnblock);
-			var z = opts.baseZ;
+			var z = opts.baseZ + 1000;// Modify By Kia
 
 			// blockUI uses 3 layers for blocking, for simplicity they are all used on every platform;
 			// layer1 is the iframe layer which is used to supress bleed through of underlying content

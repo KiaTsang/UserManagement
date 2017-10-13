@@ -273,3 +273,12 @@ div.dataTables_length {
 .w-600 {
 	width: 600px;
 }
+
+/* 调整查询页面表格样式 Add by Kia*/
+.rc-handle {
+    position:absolute;
+    width:7px;
+    cursor:ew-resize;
+    *cursor:pointer;
+    margin-left:-3px;
+}

@@ -28,47 +28,34 @@
 	 * @property　_jsArray
 	 */
 	var _jsArray = [
-        /********************** CSS样式加载 ************************/
-        'css/bootstrap.min.css',
-        'css/bootstrap-responsive.css',
-        'css/font-awesome.min.css',
-        'css/style-metro.css',
-        'css/style.css',
-        'css/style-responsive.css',
-        'css/ecp-sidebar.css',
-        'css/uniform.default.css',
-        'css/select2_metro.css',
-        'css/DT_bootstrap.css',
-        'css/jquery.gritter.css',//jQuery消息通知插件样式
-
         /********************** JS文件加载 ************************/
-        /*应用迁移辅助插件*/
-        'js/plugin/jquery-migrate-1.2.1.js',
-        /*jqueryUI插件*/
-        'js/framework/jquery/jquery-ui-1.10.1.custom.min.js',
-        /*bootstrap框架核心js*/
-        'js/framework/bootstrap/bootstrap.min.js',
-        /*兼容IE的画图插件*/
-        'js/plugin/excanvas.min.js',
-        /*让不支持css3 Media Query的浏览器包括IE6-IE8等其他浏览器支持查询*/
-        'js/plugin/respond.min.js',
-        /*HTML样式调整*/
-        'js/plugin/jquery.uniform.min.js',
-        /*HTML插件初始化文件*/
-        'js/plugin/app.js',
-        /*jQuery消息通知插件*/
-        'js/plugin/jquery.gritter.js',
-        /*用于模拟传统的浏览器滚动条(竖向)*/
-        'js/plugin/jquery.slimscroll.min.js',
-        /*遮罩插件*/
-        'js/plugin/jquery.blockui.min.js',
-        /*cookie插件*/
-        'js/plugin/jquery.cookie.min.js',
-        /*加载js工具类*/
+        // BOOTSTRAP JS
+        'js/bootstrap/bootstrap.min.js',
+        // JARVIS WIDGETS
+        'js/smartwidgets/jarvis.widget.min.js',
+        // JQUERY VALIDATE -->
+        'js/plugin/jquery-validate/jquery.validate.min.js',
+        'js/plugin/jquery-dragTab/jquery.resizableColumns.js',
+        // browser msie issue fix
+        'js/plugin/msie-fix/jquery.mb.browser.min.js',
+        // FastClick: For mobile devices
+        'js/plugin/fastclick/fastclick.js',
+        // websocket support
+        'js/plugin/sockjs/sockjs.js',
+        'js/plugin/stomp/dist/stomp.js',
+        'js/lang/zh_CN.js',
+        'js/lang/en_US.js',
+        // MAIN APP JS FILE
+        'js/app2.js',
+        'js/notification/SmartNotification.min.js',
+        'js/core/common.js',
+//        'js/core/componentConfig.js',
+//        'js/resetheight.js',
+        // 工具类
+        'js/common/GlobalInfo.js',
         'js/util/MyJsonUtil.js',
         'js/util/StringUtil.js',
-        'js/util/DomUtil.js',
-        'js/common/GlobalInfo.js'
+        'js/util/DomUtil.js'
     ];
 	
 	function loadAllJS(array){

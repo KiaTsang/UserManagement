@@ -1,9 +1,11 @@
 package ecp.bsp.business.file.controller.impl;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 
 
 import org.springframework.stereotype.Controller;
+
 import ecp.bsp.business.file.constant.TaskConst;
 import ecp.bsp.business.file.dto.BrandDTO;
 import ecp.bsp.business.file.dto.EmailReceiverDTO;
@@ -15,6 +17,9 @@ import ecp.bsp.business.file.dto.ReportRuleDTO;
 import ecp.bsp.business.file.dto.ReportTaskDTO;
 import ecp.bsp.business.file.dto.ReportTaskEncryptionDTO;
 import ecp.bsp.business.file.dto.ReportTaskReviewDTO;
+import ecp.bsp.business.file.dto.Select2DTO;
+import ecp.bsp.business.file.dto.Select2JSON;
+import ecp.bsp.business.file.dto.Select2ResultDTO;
 import ecp.bsp.business.file.dto.TaskStrategyDTO;
 import ecp.bsp.system.framework.mail.data.dto.MailModeDTO;
 import ecp.bsp.business.file.service.impl.AlgorithmService;
@@ -650,6 +655,7 @@ public class FileController {
 		List<TaskStrategyDTO> list = this.taskStrategyService.getTaskStrategyList();
 		return list;
 	}
+	
 	/**
 	 * 获取已经使用的任务策略信息列表
 	 * @return
@@ -739,7 +745,7 @@ public class FileController {
 	 * @return
 	 */
 	@SuppressWarnings("rawtypes")
-	public Object getReportTaskListByCondition(List queryCondition,Integer start,Integer limit ){
+	public Object getReportTaskListByCondition(List queryCondition,Integer start,Integer limit){
 		String sql = TaskConst.SQL_GET_REPORT_TASK_LIST;
 		List<DynamicGridQueryEntity> filter = PageQueryHepler.createConditions(queryCondition);
 		QueryPager queryPager = this.pageQueryService.queryList(filter, sql, start, limit, ReportTaskDTO.class);
@@ -748,6 +754,35 @@ public class FileController {
 		queryResultDTO.setRecordsFiltered((queryPager.getTotalCount()));
 		queryResultDTO.setData(queryPager.getResult());
 		return queryResultDTO;
+	}
+	
+	/**
+	 * 获取已经使用的任务策略信息列表（根据查询条件queryCondition）
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public Object getUsedTaskStrategyListByCondition(List queryCondition,Integer start,Integer limit){
+		String sql = TaskConst.SQL_GET_USED_TASK_STRATEGY_INFO_LIST;
+		List<DynamicGridQueryEntity> filter = PageQueryHepler.createConditions(queryCondition);
+		QueryPager queryPager = this.pageQueryService.queryList(filter, sql, start, limit, TaskStrategyDTO.class);
+		
+		List<TaskStrategyDTO> taskStrategyDTOList = (List<TaskStrategyDTO>) queryPager.getResult();
+		Select2JSON json = new Select2JSON();
+		List<Select2DTO<String>> Select2DTOList = new ArrayList<Select2DTO<String>>();
+		for (TaskStrategyDTO taskStrategyDTO : taskStrategyDTOList) {
+            Select2DTO<String> select2 = new Select2DTO<String>();
+            select2.setId(taskStrategyDTO.getId());
+            select2.setText(taskStrategyDTO.getText());
+            Select2DTOList.add(select2);
+        }
+		json.setResults(Select2DTOList);
+		json.setMore((start + limit - 1) < queryPager.getTotalCount());
+		
+		Select2ResultDTO select2ResultDTO = new Select2ResultDTO();
+		select2ResultDTO.setJson(json);
+		select2ResultDTO.setSuccess(true);
+		
+		return select2ResultDTO;
 	}
 	
 	/**

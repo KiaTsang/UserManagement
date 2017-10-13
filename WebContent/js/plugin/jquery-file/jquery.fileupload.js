@@ -62,6 +62,20 @@
     $.widget('blueimp.fileupload', {
 
         options: {
+            /**
+             * 加载数据url
+             */
+            myUrl:'',
+            fileEntity:undefined,
+            /**
+             * 上传文件传送到后台的其它参数
+             */
+            otherParams:undefined,
+            /**
+             * 要被真正保存的文件创建id集合
+             */
+            fileCreateIds:[],
+            uploadCreateIds:[],
             // The drop target element(s), by the default the complete document.
             // Set to null to disable drag & drop support:
             dropZone: $(document),
@@ -184,6 +198,28 @@
             // handlers using jQuery's Deferred callbacks:
             // data.submit().done(func).fail(func).always(func);
             add: function (e, data) {
+                console.log('add');
+                var that = $(this).data('blueimp-fileupload') ||
+                        $(this).data('fileupload'),
+                    options = that.options,
+                    files = data.files;
+                //封装文件信息
+                for(var i = 0; i < files.length; i++) {
+                    var createId = new Date().getTime()+'_'+files[i].name;
+                    data.files[i].createId = createId;
+                    console.log(data.files[i].createId );
+                    that.options.fileCreateIds.push(createId);
+                    that.fileEntity = {
+                        name : files[i].name,
+                        fileName : files[i].name,
+                        size : files[i].size,
+                        type : files[i].type,
+                        createId:createId,
+                        paaEmployeeId:""
+                    };
+                    data.url = that.options.myUrl + that._generateUrlParamObject('FileEntity',that.fileEntity);
+                }
+
                 if (e.isDefaultPrevented()) {
                     return false;
                 }
@@ -1334,6 +1370,13 @@
             this._sending = this._active = 0;
             this._initProgressObject(this);
             this._initEventHandlers();
+        },
+
+        //生成传送到后台的参数
+        _generateUrlParamObject:function(dataType,dataValue){
+            var obj = [];
+            obj.push(StringUtil.decorateRequestData(dataType,dataValue));
+            return MyJsonUtil.obj2str(obj);
         },
 
         // This method is exposed to the widget API and allows to query
