@@ -43,7 +43,7 @@ public class LoginFilter implements Filter {
         // 判断如果没有取到员工信息,就跳转到登陆页面
         if (empId == null || "".equals(empId)) {
             // 跳转到登陆页面
-            servletResponse.sendRedirect("/FileTrackingManagement/login.html");
+            servletResponse.sendRedirect("/UserManagement/pages/login.html");
         } else {
             // 已经登陆,继续此次请求
             chain.doFilter(request, response);

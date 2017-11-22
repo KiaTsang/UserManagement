@@ -1,5 +1,5 @@
 /**
- * FileName: automationRegularAdd.js
+ * FileName: userEdit.js
  * File description: 用于加载和初始化自动化规则配置页面的组件及内容
  * Copyright (c) 2016 Eastcompeace, Inc. All Rights Reserved.
  *
@@ -8,7 +8,7 @@
  */
 
 /**
- * automationRegularAdd所有属性和方法定义
+ * userEdit所有属性和方法定义
  * @type {userEdit}
  */
 var userEdit = function () {
@@ -80,68 +80,6 @@ var userEdit = function () {
             });
     }
 
-    var handleButton = function () {
-        //“确定”按钮,表单的提交
-        $('#btn-save').on('click', function () {
-            var taskStrategyId = $('#taskStrategyId').attr("value");
-            var obj = [];
-            //隐藏域赋值
-            $('#paaEmployeeId').attr("value", "20667");
-            $('#paaUsername').attr("value", "曾庆越");
-            var addData = DomUtil.getJSONObjectFromForm('create-issue-form', null);
-            console.log(addData);
-            var fileList = $('#file-upload').data('blueimp-fileupload').options.uploadCreateIds;
-            if (fileList.length == 0) {
-                bootbox.alert({
-                    className: 'span4 alert-error',
-                    buttons: {
-                        ok: {
-                            label: '确定',
-                            className: 'btn blue'
-                        }
-                    },
-                    message: "附件不能为空",
-                    callback: function () {
-
-                    },
-                    title: "错误提示"
-                });
-            } else {
-                obj.push(StringUtil.decorateRequestData('ReportTaskDTO', addData));
-                obj.push(StringUtil.decorateRequestData('List', fileList));
-                //进度条
-                $('#progressBar').modal('show', true);
-                $.ajax({
-                    type: "POST",
-                    url: SMController.getUrl({
-                        controller: 'controllerProxy',
-                        method: 'callBack',
-                        proxyClass: 'fileController',
-                        proxyMethod: 'submitReportTask',
-                        jsonString: MyJsonUtil.obj2str(obj)
-                    }),
-                    dataType: "json",
-                    beforeSend: function(jqXHR, settings) {
-                        $.blockUI({
-                            message: '<div class="progress progress-sm progress-striped active" style="margin-bottom: 0px;">' +
-                                '<div style="width: 100%" role="progressbar" class="progress-bar bg-color-darken">' +
-                                '<span style="position: relative; top: -3px;">正在处理，请稍后...</span></div>' +
-                                '</div>'
-                        });
-                    },
-                    success: function (result) {
-                        console.log(result);
-                        if (result.success) {
-                            $.unblockUI();
-                        } else {
-
-                        }
-                    }
-                });
-            }
-        });
-    }
-
     var handleForm = function () {
         $("#create-issue-form").validate({
             // 指定验证时要忽略哪些元素，默认是hidden，支持jQuery的伪类选择器，需要为应用该验证器的元素加上.required-validation
@@ -156,7 +94,9 @@ var userEdit = function () {
                 }
             }, // Messages for form
             messages: {
-
+                taskStrategyId:{
+                    required:"策略不能为空！！！"
+                }
             },
 
             highlight: function(element, errorClass) {
@@ -168,7 +108,80 @@ var userEdit = function () {
             },
 
             submitHandler: function(form) { //验证通过时触发
-                form.submit(); //表单提交
+                var taskStrategyId = $('#taskStrategyId').attr("value");
+                var obj = [];
+                //隐藏域赋值
+                $('#paaEmployeeId').attr("value", "20667");
+                $('#paaUsername').attr("value", "曾庆越");
+                var addData = DomUtil.getJSONObjectFromForm('create-issue-form', null);
+                console.log(addData);
+                var fileList = $('#file-upload').data('blueimp-fileupload').options.uploadCreateIds;
+                if (fileList.length == 0) {
+                    bootbox.alert({
+                        className: 'span4 alert-error',
+                        buttons: {
+                            ok: {
+                                label: '确定',
+                                className: 'btn blue'
+                            }
+                        },
+                        message: "附件不能为空",
+                        callback: function () {
+
+                        },
+                        title: "错误提示"
+                    });
+                } else {
+                    obj.push(StringUtil.decorateRequestData('ReportTaskDTO', addData));
+                    obj.push(StringUtil.decorateRequestData('List', fileList));
+                    //进度条
+                    $('#progressBar').modal('show', true);
+                    $.ajax({
+                        type: "POST",
+                        url: SMController.getUrl({
+                            controller: 'controllerProxy',
+                            method: 'callBack',
+                            proxyClass: 'fileController',
+                            proxyMethod: 'submitReportTask',
+                            jsonString: MyJsonUtil.obj2str(obj)
+                        }),
+                        dataType: "json",
+                        beforeSend: function(jqXHR, settings) {
+                            $.blockUI({
+                                message: '<div class="progress progress-lg progress-striped active" style="margin-bottom: 0px;">' +
+                                    '<div style="width: 100%" role="progressbar" class="progress-bar bg-color-darken">' +
+                                    '<span id="processStatus" style="position: relative; top: 5px;font-size:15px;">正在处理，请稍后...</span></div>' +
+                                    '</div>'
+                            });
+                        },
+                        success: function (result) {
+                            if (result.success) {
+                                $("#processStatus").text("提交成功，正在返回上一页面...");
+                                setTimeout(function(){
+                                    $.unblockUI();
+                                    history.back();
+                                }, 1500);
+
+                            } else {
+                                $.unblockUI();
+                                bootbox.alert({
+                                    title: '提示',//I18n.getI18nPropByKey("ProductionExecution.errorPrompt"),
+                                    message:result.msg,
+                                    className:'span4 alert-error',
+                                    buttons: {
+                                        ok: {
+                                            label: '关闭',//I18n.getI18nPropByKey("ProductionExecution.confirm"),
+                                            className: 'btn blue'
+                                        }
+                                    },
+                                    callback: function() {
+
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
             }, // Do not change code below
 
             errorPlacement: function(error, element) {
@@ -249,7 +262,6 @@ var userEdit = function () {
     return {
         init: function () {
             handleSelect2();
-            handleButton();
             handleForm();
             handleFileUpload();
         }

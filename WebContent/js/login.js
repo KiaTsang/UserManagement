@@ -1,128 +1,252 @@
 /**
  * FileName: login.js
+ * File description: 用于加载和初始化登录页面的组件及内容
+ * Copyright (c) 2016 Eastcompeace, Inc. All Rights Reserved.
  *
- * File description goes here.
- *
- * Copyright (c) 2010 Asiasoft, Inc. All Rights Reserved.
- *
- * @author <a href="mailto:li.zhou@iaspec.net">Julia.Zhou</a>
- * @Version: 1.0.0
- * @DateTime: 2014-08-05
+ * @author <a href="mailto:zengqingyue@eastcompeace.com">zengqingyue</a>
+ * @DateTime: 2016-11-02
  */
 
-var action ="/login.jspa";
-var loginTools = function() {
+/**
+ * login所有属性和方法定义
+ * @type {login}
+ */
+var login = function () {
 
-  return {
-	    login: function() {
-	    	loginTools.updateFlag($('.dtms'));
-	    	var dtms_login=$("#dtmsURL").val()+action;
-	    	var itms_login=$("#itmsURL").val()+action;
-	    	var sys_login=$("#sysURL").val()+action;
-	        var pms_login=$("#pmsURL").val()+action;
-            var knowlege_login=$("#knowlegeURL").val()+action;
-
-	       	localStorage.setItem("dtms_login",dtms_login);
-	    	localStorage.setItem("itms_login",itms_login);
-	    	localStorage.setItem("sys_login",sys_login);
-	        localStorage.setItem("pms_login",pms_login);
-	        localStorage.setItem("knowlege_login",knowlege_login);
-
-			var sysImageMap = {
-                dtms: "img/login/systemLogo_01.png",
-                itms: "img/login/systemLogo_02.png",
-                knowlege: "img/login/systemLogo_03.png",
-                pms: "img/login/systemLogo_04.png",
-                sys: "img/login/systemLogo_05.png"
+    var handleForm = function () {
+        updateFlag($('.dtms'));
+        var sysImageMap = {
+                dtms: "../img/login/systemLogo_01.png",
+                itms: "../img/login/systemLogo_02.png",
+                knowlege: "../img/login/systemLogo_03.png",
+                pms: "../img/login/systemLogo_04.png",
+                sys: "../img/login/systemLogo_05.png"
             },
-            sysUrlsMap = {
-                dtms: dtms_login,
-                itms: itms_login,
-                knowlege: knowlege_login,
-                pms: pms_login,
-                sys: sys_login
-            };
             $title = $("#rightTitle img"),
             $form = $("#loginForm"),
             that = this;
 
-            $("#leftContent").on("click", ".simpleTile", function(e) {
-				$title.attr("src", sysImageMap[$(this).data("key")]);
-                $form.attr("action", sysUrlsMap[$(this).data("key")]);
-                $(this).addClass("selectedTile").siblings().removeClass("selectedTile");
-                that.updateFlag($(this));
-			});
+        $("#leftContent").on("click", ".simpleTile", function(e) {
+            $title.attr("src", sysImageMap[$(this).data("key")]);
+            $(this).addClass("selectedTile").siblings().removeClass("selectedTile");
+            updateFlag($(this));
+        });
 
-			$("#loginForm").validate({
-				rules:{
-					username:{
-						required:true
-					},
-					password:{
-						required:true
-						}
-				},
-				  messages: {
-					  username:{
-						  required:"用户名不能为空！！！",
-					  },
-					  password:{
-						  required:"密码不能为空！！！"
-					  }
-				  }
-			});
-	    },
-	    updateFlag :function(target) {
-			$('.tileFlag').remove();
-			$("<div class=\"tileFlag\"></div>").appendTo(target).offset({
+        $("#loginForm").validate({
+            rules:{
+                username:{
+                    required:true
+                },
+                password:{
+                    required:true
+                }
+            },
+            messages: {
+                username:{
+                    required:"用户名不能为空！！！"
+                },
+                password:{
+                    required:"密码不能为空！！！"
+                }
+            },
+            submitHandler: function (form) {
+                var obj = [];
+                obj.push(StringUtil.decorateRequestData('String',$("#username").val()));
+                obj.push(StringUtil.decorateRequestData('String',$("#password").val()));
+                var urlConfig = {controller:'controllerProxy',method:'callBackByRequest'
+                    ,proxyClass:'loginController',proxyMethod:'login',jsonString:MyJsonUtil.obj2str(obj)};
+                var baseUrl = '../'
+                $.ajax({
+                    type:"POST",
+                    url:SMController.getUrl(urlConfig,baseUrl),
+                    dataType:"json",
+                    success:function(result) {
+                        if (result.success) {
+//                            $.pnotify({
+//                                text: result.msg
+//                            });
+                            window.location.href='../pages/user/user_list.html';
+                        } else {
+                            bootbox.alert({
+                                title: '提示',//I18n.getI18nPropByKey("ProductionExecution.errorPrompt"),
+                                message:result.msg,
+                                className:'span4 alert-error',
+                                buttons: {
+                                    ok: {
+                                        label: '关闭',//I18n.getI18nPropByKey("ProductionExecution.confirm"),
+                                        className: 'btn blue'
+                                    }
+                                },
+                                callback: function() {
+
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
+
+        document.onkeydown = function(e) {
+            if(!e) e = window.event;
+            if((e.keyCode || e.which) == 13){
+                document.getElementById("btnSubmit").click();
+            }
+        };
+
+        function updateFlag(target) {
+            $('.tileFlag').remove();
+            $("<div class=\"tileFlag\"></div>").appendTo(target).offset({
                 "top": target.offset().top + 3
             });
-	  },
-	  againLogin:function()
-	  {
-	     if($("#dtmsURL").val())
-		  {
-	    	  localStorage.setItem("dtms_login", $("#dtmsURL").val() + action);
-              localStorage.setItem("itms_login", $("#itmsURL").val() + action);
-              localStorage.setItem("sys_login", $("#sysURL").val() + action);
-              localStorage.setItem("pms_login", $("#pmsURL").val() + action);
-              localStorage.setItem("knowlege_login", $("#knowlegeURL").val() + action);
-         	  localStorage.setItem("username",$("#j_username").val());
-         	  localStorage.setItem("topLogoPath",$("#topLogoPath").attr("src"));
-		  }
-	     
-	     if($("#j_sessionId").val())
-         {
-       	  localStorage.setItem("sessionId", $("#j_sessionId").val());
-         }
+        }
+    };
 
-		  var dtms_login = localStorage.getItem("dtms_login"),
-        	  itms_login = localStorage.getItem("itms_login"),
-              sys_login = localStorage.getItem("sys_login"),
-	          pms_login = localStorage.getItem("pms_login");
-              knowlege_login = localStorage.getItem("knowlege_login");
-              sessionId = localStorage.getItem("sessionId");
-              topLogoPath = localStorage.getItem("topLogoPath");
-              
-              $("#topLogoPath").attr("src",topLogoPath);
+    var handleTop = function () {
+        initTopEvent();
+        validateFrom();
 
-	      var urls = [ itms_login, sys_login, dtms_login, dtms_login ];
+        // 初始化表单提交事件
+        function initTopEvent() {
+            // 设置登录名
+            $("#loginUser").text(CurrentLoginUser.data.user_fullname);
 
-          $("#itms_login, #sys_login, #dtms_login, #dtms_login").each(function(i, v) {
-            $(this).on("click", function(e) {
-            	$("#j_sessionId").val(sessionId);
-            	var urlTemp = urls[i]+'?r='+new Date().getTime();
-                $('#loginAgainForm').attr("action", urlTemp).submit();
+            // 退出登录
+            $("#logout").click(function(e) {
+//                localStorage.removeItem("target_nav");
+//                localStorage.removeItem("username");
+//                localStorage.removeItem("globalResources");
+//                localStorage.removeItem("specificResources");
+//                localStorage.removeItem("roles");
+                $.ajax({
+                    type:'post',
+                    dataType:"json",
+                    url: SMController.getUrl({controller:'controllerProxy',method:'callBackByRequest',
+                        proxyClass:'loginController',proxyMethod:'userLogout',jsonString:null}),
+                    success:function(result){
+                        if(result.success){
+                            window.location.href="../login.html";
+                        }else{
+                            bootbox.alert({
+                                className:'span4 alert-error',
+                                buttons: {
+                                    ok: {
+                                        label: '确定',
+                                        className: 'btn blue'
+                                    }
+                                },
+                                message:result.msg,
+                                title: "错误提示"
+                            });
+                        }
+                    }
+                });
             });
-          });
 
-		  $("#logout").click(function(e) {
-			  localStorage.removeItem("target_nav");
-			  localStorage.removeItem("username");
-			  localStorage.removeItem("globalResources");
-			  localStorage.removeItem("specificResources");
-			  localStorage.removeItem("roles");
-		  });
-	  }
-  };
+            // 提交表单
+            $("#btn-modifiedPassword").on('click', function(e){
+                // 清除界面上的弹出框
+                clearSmallBox();
+                // 锁定，防止重复提交
+                if(!lockItms($('#btn-modifiedPassword').get(0))) {
+                    return;
+                }
+                if(!$("#password-form").valid()) {
+                    // 解锁
+                    unlockItms($('#btn-modifiedPassword').get(0));
+                    return;
+                }
+                $.ajax({
+                    url : $.url_root + '/user/changePassWord.jspa',
+                    type : 'post',
+                    dataType: "json",
+                    data : {
+                        "userDTO.password" : $("#password").val(),
+                        "userDTO.newPassword" : $("#newPassword").val()
+                    },
+                    success : function(data) {
+                        checkResult(data, {
+                            message : "密码更改成功",
+                            showBox : true,
+                            callback : function(){
+                                //修改成功后重置表单及清除格式
+                                resetOrClearForm();
+                                $("#modifyPasswordModal").modal("hide");
+                            }
+                        });
+                        // 解锁
+                        unlockItms($('#btn-modifiedPassword').get(0));
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        showOperationError(xhr, textStatus, errorThrown);
+                    }
+                });
+            });
+
+            //取消提交表单,表单填充域清空
+            $("#btn-cancel , .close").on('click',function(e){
+                resetOrClearForm();
+            });
+        }
+
+        //为表单提供验证规则
+        function validateFrom(){
+            //为validator添加自定义方法;
+            $.validator.addMethod("rightFormate", function (value, element) {
+                var tel = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,60}$/;
+                return this.optional(element) || (tel.test(value));
+            }, '正确的密码格式是由字母和数字组成!');
+
+            //验证表单
+            $("#password-form").validate({
+                rules: {
+                    password:{
+                        required: true
+                    },
+                    newPassword: {
+                        required: true,
+                        rangelength: [8,60],
+                        rightFormate : true
+                    },
+                    passwordConfirm: {
+                        required: true,
+                        equalTo: '#newPassword'
+                    }
+                },
+                messages: {
+                    password:{
+                        required: '请输入密码!'
+                    },
+                    newPassword: {
+                        required: '请输入密码!',
+                        rangelength: "请输入 一个长度介于{0}至{1} 之间的字符串",
+                        rightFormate : '正确的密码格式是由字母和数字组成!'
+
+                    },
+                    passwordConfirm: {
+                        required: '请再次输入密码',
+                        equalTo: '输入与上次不一致, 请确保确认密码和新密码一致!'
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter(element.parent());
+                }
+            });
+        }
+
+        //重置或清空表单
+        function resetOrClearForm(){
+            $("#password-form")[0].reset();
+            $("#password, #newPassword, #passwordConfirm").parent().removeClass("state-success state-error").next().remove();
+        }
+    }
+
+    return {
+        init: function () {
+            handleForm();
+        },
+        initTop: function() {
+            handleTop();
+        }
+    };
 }();

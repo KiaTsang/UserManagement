@@ -39,7 +39,7 @@ var common = function() {
 			    "ordering": false,
 			    "stateSave": false,
 			    "language": {
-		    		"processing": i18nRes.global.processing,
+		    		"processing": "正在处理",
 		    		"lengthMenu": "每页显示 _MENU_ 条记录",
 		    		"zeroRecords": "对不起，查询不到相关数据！",
 		    		"info": "当前显示 _START_ 到 _END_ 条，总共 _TOTAL_ 条记录",

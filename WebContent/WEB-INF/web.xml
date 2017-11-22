@@ -94,14 +94,14 @@
     <url-pattern>*.do</url-pattern>
   </filter-mapping>
   
-  <!-- <filter>
+  <filter>
 	  <filter-name>login</filter-name>
 	  <filter-class>ecp.bsp.business.file.filter.LoginFilter</filter-class>
   </filter>
   <filter-mapping>
 	  <filter-name>login</filter-name>
 	  <url-pattern>*.html</url-pattern>
-  </filter-mapping> -->
+  </filter-mapping>
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
