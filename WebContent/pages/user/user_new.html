@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <!-- Basic Styles -->
+    <link href="../../css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+    <link href="../../css/smartadmin-production.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/smartadmin-skins.css" media="screen" rel="stylesheet" type="text/css">
+
+    <link href="../../css/demo.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/navigation.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/jquery.fileupload-ui.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="top"></div>
+    <div id="leftnav"></div>
+    <div id="main" role="main">
+        <div id="ribbon">
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li><a href="/dashboard_cardpro.jspa"/>首页</a></li>
+                <li><a href="/issue/issues_list_card.jspa">用户列表</a></li>
+                <li>创建用户</li>
+            </ol>
+        </div>
+        <div id="content">
+            <form id="create-issue-form" method="post">
+                <input id="updateFlag" type="hidden" name="issueDTO.isCreated"> <!--<%-- 默认创建项目--%>-->
+                <input id="pid" type="hidden" name="issueDTO.projectId">
+                <input id="labels" type="hidden" name="issueDTO.beanString">
+                <input id="labelUrl" type="hidden" value="/issue/findDefaultLabelsForCard.jspa">
+                <input id="draftFlag" type="hidden" name="issueDTO.isSavedToDraft" value="false">
+                <!-- end row -->
+                <!-- row -->
+                <div class="row issueBody issueBodyCardPro">
+                    <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget well" id="wid-id-3" data-widget-colorbutton="false" data-widget-editbutton="false"
+                      data-widget-togglebutton="false" data-widget-deletebutton="false"  data-widget-fullscreenbutton="false"
+                      data-widget-custombutton="false" data-widget-sortable="false">
+                      <header>
+                      </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body widget-hide-overflow">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <span class="font-md text-primary">报表任务信息</span>
+                                    </div>
+                                </div>
+                                <hr class="simple">
+                                <!-- <form action="" id="checkout-form" class="" novalidate="novalidate"> -->
+                                <!--row-->
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tile">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">
+                                                        策略名称
+                                                    </label>
+                                                    <div>
+                                                        <input id="taskStrategyId" class="required-validation" name="taskStrategyId" style="width: 100%" type="hidden" data-max="200">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <label class="control-label">报表命名规则描述</label>
+                                                    <div>
+                                                        <textarea class="form-control required-validation" rows="3" name="taskStrategyDiscribe" style="resize: none;"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div>
+                                            <h3>附件</h3>
+                                            <hr>
+                                        </div>
+                                        <div class="row">
+                                            <div class="smart-form col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="hidden" id="imageError">
+                                                    <label style="font-size:10px; color:#DE1F00;"></label>
+                                                </div>
+                                                <span class="btn btn-success fileinput-button">
+                                                    <i class="glyphicon glyphicon-plus"></i>
+                                                    <span>选择文件</span>
+                                                    <!-- The file input field used as target for the file upload widget -->
+                                                    <input id="file-upload" type="file" name="files[]" multiple>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    <br>
+                                        <div class="chat-body no-padding profile-message">
+                                            <table id="fileAttachements" class="table table-hover table-noborder">
+                                                <tbody>
+                                                    <th>文件名</th>
+                                                    <th>大小</th>
+                                                    <th>时间</th>
+                                                    <th>操作</th>
+                                                </tbody>
+                                            </table>
+                                            <div id="fileAttachements_tmp" style="display: none">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <hr>
+                                        <div class="pull-right form-action-bar">
+                                            <button type="submit" title="提交该缺陷" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i>&nbsp; 提交</button>&nbsp;&nbsp;
+                                            <a title="取消提交" href="../user/user_list.html" class="btn btn-default"><i class="fa fa-ban"></i>&nbsp; 取消</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!--end row-->
+                            <!-- </form> -->
+                            <!-- SEARCH CONTAINER -->
+                            </div>
+                        <!-- end widget content -->
+                        </div>
+                      <!-- end widget div -->
+                    </div>
+                    <!-- end widget -->
+                    </article>
+                </div>
+                <!--创建人id和name  value="上传报表命名规则"  readonly="readonly"-->
+                <input type="hidden" name="paaEmployeeId" id="paaEmployeeId"/>
+                <input type="hidden" name="paaUsername" id="paaUsername" />
+            </form>
+        </div>
+    </div>
+    <input id="typeIndicator" type="hidden" value="card">
+    <div id="footer"></div>
+</body>
+
+<script data-pace-options='{ "restartOnRequestAfter": true }' src="../../js/plugin/pace/pace.min.js"></script>
+<script src="../../js/libs/jquery-2.0.2.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        document.write('<script src="../../js/libs/jquery-2.0.2.min.js"><\/script>');
+    }
+</script>
+<script src="../../js/libs/jquery-ui-1.10.3.min.js"></script>
+<script>
+    if (!window.jQuery.ui) {
+        document.write('<script src="../../js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+    }
+</script>
+
+<script src="../../js/core/ecpLoader.js"></script>
+<!-- JQUERY BLOCK UI -->
+<script src="../../js/plugin/jquery-blockui/jquery.blockUI.js"></script>
+<!-- JQUERY SELECT2 INPUT -->
+<script src="../../js/plugin/select2/select2.min.js"></script>
+<!-- JQUERY UI + Bootstrap Slider -->
+<script src="../../js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+<script src="../../js/plugin/jquery-file/jquery.fileupload.js"></script>
+<script src="../../js/plugin/jquery-file/jquery.iframe-transport.js"></script>
+<script src="../../js/plugin/jquery-file/jquery.xdr-transport.js"></script>
+<script src="../../js/plugin/jquery-file/jquery.fileupload-process.js"></script>
+<script src="../../js/plugin/jquery-file/jquery.fileupload-validate.js"></script>
+
+<script src="../../js/business/user/userEdit.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#top").load("../../pages/top.html");
+        $("#leftnav").load("../../pages/leftnav.html");
+        $("#footer").load("../../pages/footer.html");
+   });
+
+    window.onload = function(){
+        app.init();
+        userEdit.init();
+    }
+</script>
+</html>

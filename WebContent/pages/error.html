@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>参数异常</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Basic Styles -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/font-awesome.min.css" />
+    <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/smartadmin-production.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/smartadmin-skins.css" />
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+</head>
+<body class="">
+    <div class="container" role="main">
+        <div id="content" style="margin-top: 120px;">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="text-center error-box">
+                                <h2 class="font-xl"><strong><i class="fa fa-fw fa-warning fa-lg text-warning"></i> 页面参数异常</strong></h2>
+                                <br />
+                                <p class="lead">
+                                                                                                                    你所请求的页面存在参数异常，请联系系统管理员。
+                                </p>
+                                <p class="font-md">
+                                    <span id="leaveTime">5</span>s后跳转到上一个页面，或手动<a href="javascript:;" onclick="javascript:history.go(-1);"><u><b>点击</b></u></a>返回到上一个页面。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="/js/libs/jquery-2.0.2.min.js"></script>
+<script>
+    $(function() {
+        var currentSecond = 4,
+            $time = $("#leaveTime"),
+            showTime = function() {
+                if (currentSecond === 0) {
+                    history.go(-1);
+                    return;
+                }
+                $time.html(currentSecond--);
+            };
+        setInterval(showTime, 1000);
+    });
+</script>
+</html>

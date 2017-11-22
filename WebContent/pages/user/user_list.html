@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+    <!-- Basic Styles -->
+    <link href="../../css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/font-awesome.min.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+    <link href="../../css/smartadmin-production.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/smartadmin-skins.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- Common Style -->
+    <link href="../../css/common.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/demo.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/navigation.css" media="screen" rel="stylesheet" type="text/css">
+
+    <link href="../../css/dataTables.colVis.css" media="screen" rel="stylesheet" type="text/css">
+    <!-- Date Picker -->
+    <link href="../../css/datepicker3.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="../../css/dataTables.colVis.min.css" media="screen" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <!-- Left panel : Navigation area -->
+    <div id="top"></div>
+    <div id="leftnav"></div>
+    <!-- END NAVIGATION -->
+
+    <div id="main" role="main">
+        <!-- RIBBON -->
+        <div id="ribbon">
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li><a href="/dashboard_cardpro.jspa" data-item-index="1">首页</a></li>
+                <li>用户列表</li>
+            </ol>
+            <!-- end breadcrumb -->
+        </div>
+        <!-- END RIBBON -->
+
+        <!-- MAIN CONTENT -->
+        <div id="content">
+    	    <div class="row">
+        	    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        	        <div class="well">
+            	        <div class="widget-body-toolbar">
+            	          <strong>查询</strong>
+            	          <span class="hidden-mobile hidden-tablet"><i> </i></span>
+            	        </div>
+            	        <div class="widget-body no-padding" style="margin-top: 10px;">
+        	                <div class="row">
+        	                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        	                        <div class="align-padding" id="simple-search">
+        	                            <form id="simple-search-form">
+        	                                <div class="input-group">
+        	                                    <div class="input-group-btn">
+        	                                        <button type="button" class="btn btn-default dropdown-toggle fixed-btn-height" data-toggle="dropdown">
+                                                        <span id="current-selected-condition">所有</span> <span class="caret"></span>
+                                                    </button>
+                                                    <ul id="issue-condition-selector" class="dropdown-menu">
+                                                        <li class="active">
+                                                            <a href="javascript:;" data-last-value="allMatchers"><i class="fa fa-check"></i> 所有</a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a href="javascript:;" data-last-value="reportTaskName">报表名称</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;" data-last-value="productTypeName">产品类型</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;" data-last-value="brandName">品牌</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;" data-last-value="operatorName">运营商</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:;" data-last-value="reportSendTypeName" data-multi="true">分发类型</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+        	                                    <input class="form-control" type="text" placeholder="项目提示" name="allMatchers" data-keyup="true">
+        
+        	                                    <input class="form-control hidden" type="text" placeholder="报表名称"  name="reportTaskName" data-keyup="true">
+        
+                                                <input class="form-control hidden" name="productTypeName" type="text" placeholder="产品类型" data-keyup="true">
+        
+        	                                    <!--请保留name="status"和data-src="local", data-src属性指示数据来源于本地-->
+        	                                    <input class="form-control hidden" name="brandName" type="text" placeholder="品牌"  data-keyup="true">
+        
+        	                                    <!--请保留name="severity"和data-src="local", data-src属性指示数据来源于本地-->
+        	                                    <input class="form-control hidden" name="operatorName" type="text" placeholder="运营商"  data-keyup="true">
+        
+                                                <input class="hidden" name="reportSendTypeName" type="hidden" placeholder="分发类型" data-src="local">
+        
+        	                                    <div class="input-group-btn">
+        	                                      <button id="btn-simple-search" type="button" class="btn btn-primary">
+        	                                          <i class="fa fa-fw fa-search "></i>搜索
+        	                                      </button>
+        	                                    </div>
+        
+        	                                    <div class="input-group-btn">
+        	                                      <button id="btn-show-more-search" type="button" class="btn btn-default" data-search-mode="combination">
+        	                                      高级
+        	                                      </button>
+        	                                    </div>
+        	                                </div>
+        	                            </form>
+        	                        </div>
+        
+        	                        <!--more search-->
+        	                        <div id="more-search" style="display: none;">
+        	                            <form id="combinational-search-form">
+        	                                <div class="row">
+        	                                    <div class="col-sm-10 col-md-10 col-lg-10">
+        	                                        <div class="row" style="margin: 0;">
+        	                                            <div class="col-sm-6 col-md-4 col-lg-4">
+        	                                                <div class="form-group">
+        	                                                    <input class="form-control" style="padding-left: 5px;" name="reportTaskName" type="text" placeholder="报表名称" data-moda="combination" data-type="string">
+        	                                                </div>
+        	                                            </div>
+        	                                            <div class="col-sm-6 col-md-4 col-lg-4">
+        	                                                <div class="form-group">
+        	                                                    <!--请保留name="status"和data-src="local", data-src属性指示数据来源于本地-->
+        	                                                    <input name="reportSendTypeName" type="hidden" placeholder="分发类型" data-moda="combination" data-src="local" data-type="checkbox">
+        	                                                </div>
+        	                                            </div>
+                                                    </div>
+                                                    <div class="row" style="margin: 0;">
+                                                        <div class="col-sm-6 col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <input id="startDate" type="text" placeholder="开始日期" class="form-control input-sm" name="startTime" data-type="date" data-moda="combination">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-4 col-lg-4">
+                                                            <div class="form-group">
+                                                                <input id="endDate" type="text" placeholder="结束日期" class="form-control input-sm" name="endTime" data-type="date" data-moda="combination">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+        	                                    </div>
+        	                                    <div class="col-sm-2 col-md-2 col-lg-2 responsive-alignment">
+                                                    <div class="pull-right">
+            	                                        <button id="btn-show-simple-search" type="button" class="btn btn-default pull-right" data-search-mode="simple">
+            	                                             基本
+            	                                        </button>
+            	                                        <button id="btn-combination-search" type="button" class="btn btn-primary pull-right"><i class="fa fa-search"></i>搜索</button>
+                                                    </div>
+        	                                    </div>
+        	                                </div>
+        	                            </form>
+        	                        </div>
+        	                    </div>
+        	                </div>
+            	        </div>
+        	        </div>
+        	    </div>
+    	    </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="well">
+                        <div class="widget-body-toolbar" style="padding:1px 13px 10px 0;">
+                            <a href='user_new.html' class="btn btn-success btn-sm pull-right" >
+                                <i class="fa fa-lg fa-plus"></i> <span class="hidden-mobile hidden-tablet" data-i18n="newUser"></span>
+                            </a>
+                            <div class="btn-group hidden-phone pull-right">
+                                <a class="btn dropdown-toggle btn-sm btn-primary exportToExcelTables"><i class="fa fa-cog"></i>导出</a>
+                            </div>
+                        </div>
+                        <table id="dt_issues" width="100%;" style="width: 100%;" class="table table-striped table-hover compact fixedTable dt-responsive no-wrap table-bordered">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 不能删除，查询所用 -->
+    <!-- the query mode, simple query or combinational query -->
+    <input id="query-mode" type="hidden" value="simple">
+    <div id="footer"></div>
+</body>
+
+<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+<script data-pace-options='{ "restartOnRequestAfter": true }' src="../../js/plugin/pace/pace.min.js"></script>
+<script src="../../js/libs/jquery-2.0.2.min.js"></script>
+<script>
+    if (!window.jQuery) {
+        document.write('<script src="../../js/libs/jquery-2.0.2.min.js"><\/script>');
+    }
+</script>
+<script src="../../js/libs/jquery-ui-1.10.3.min.js"></script>
+<script>
+    if (!window.jQuery.ui) {
+        document.write('<script src="../../js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+    }
+</script>
+<script src="../../js/core/ecpLoader.js"></script>
+<!-- JQUERY SELECT2 INPUT -->
+<script src="../../js/plugin/select2/select2.min.js"></script>
+<!-- bootstrap-datepicker-master -->
+<script src="../../js/plugin/bootstrap-datepicker-master/bootstrap-datepicker.js"></script>
+<script src="../../js/plugin/bootstrap-datepicker-master/locales/bootstrap-datepicker.zh-CN.js"></script>
+<script src="../../js/plugin/datatables10/jquery.dataTables.js"></script>
+<script src="../../js/plugin/datatables10/dataTables.colReorder.js"></script>
+<script src="../../js/plugin/datatables10/dataTables.colVis.min.js"></script>
+<script src="../../js/plugin/datatables/ZeroClipboard.js"></script>
+<script src="../../js/plugin/datatables/media/js/TableTools.min.js"></script>
+<script src="../../js/plugin/datatables10/DT_bootstrap.js"></script>
+<script src="../../js/core/searchCommon.js"></script>
+<script src="../../js/business/user/userList.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#top").load("../../pages/top.html");
+        $("#leftnav").load("../../pages/leftnav.html");
+        $("#footer").load("../../pages/footer.html");
+    });
+
+    window.onload = function(){
+        app.init();
+        app.internationalInit('UserManagement');
+        userList.init();
+    }
+</script>
+</html>
