@@ -38,7 +38,7 @@
     padding: 0px 0px 10px 0px;
 }
 .tile ul li {
-    display: inline-block;
+    /*display: inline-block;*/ /*modify by kia*/
     width: auto;
 }
 .tile ul li .jarvismetro-tile {

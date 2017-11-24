@@ -1319,7 +1319,7 @@ function drawBreadCrumb() {
 function checkResult(data, objSuccess, callbackError) {
 	var options={
 			'showBox':true,
-			'message':tipMessage.operationSuccess,
+			'message':"操作成功",
 			'callback' : function(){}
 	};
 	jQuery.extend(options, objSuccess);
@@ -1328,7 +1328,7 @@ function checkResult(data, objSuccess, callbackError) {
 		if(options.showBox)
 	    {
 			$.smallBox({
-			    title : options.message,
+			    title : "信息",
 			    content : "",
 			    color : $boxColors.green,
 			    iconSmall : "fa fa-times",
