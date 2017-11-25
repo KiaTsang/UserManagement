@@ -220,5 +220,11 @@
         app.internationalInit('UserManagement');
         userList.init();
     }
+
+    // 不加载app.js其他浏览器会显示不了左侧导航的+-图标，火狐则可以正常显示
+    loadScript("../../js/app.js", initTop);
+    function initTop() {
+
+    }
 </script>
 </html>

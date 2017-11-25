@@ -15,7 +15,7 @@
 	            var ext = att[att.length - 1].toLowerCase();
 	            var isCSS = ext == "css";
 	            var tag = isCSS ? "link" : "script";
-	            var attr = isCSS ? " type='text/css' rel='stylesheet' " : " language='javascript' type='text/javascript' ";
+	            var attr = isCSS ? " type='text/css' rel='stylesheet' " : " type='text/javascript' ";
 	            var link = (isCSS ? "href" : "src") + "='" + $.includePath + name + "'";
 	            if ($(tag + "[" + link + "]").length == 0) document.write("<" + tag + attr + link + "></" + tag + ">");
 	        }

@@ -20,22 +20,22 @@
 
     $.url_root =getUrlRoot();
 
-    $.index_action="/dashboard_cardpro.jspa";
+//    $.index_action="/dashboard_cardpro.jspa";
 
     $index_href =getUrlRoot(true)+$.index_action;
 
     //$.search_issue_labelValues =[];
-    $.search_issue_labelIds =[];
-    $.search_global_issue_card_labelIds =[];
-    $.search_global_issue_sys_labelIds =[];
-    $.search_global_issue_white_labelIds =[];
-   // $.search_issue_select2_labelIds =[];
-    $.search_issue_isExact =false;
-    $.search_global_issue_card_isExact =false;
-    $.search_global_issue_sys_isExact =false;
-    $.search_global_issue_white_isExact =false;
-    $.findIssuesbyCondition =$.url_root+"/issue/findIssuesbyCondition.jspa";
-    $.searchIssuesByCondition =$.url_root+"/search/searchIssuesByCondition.jspa";
+//    $.search_issue_labelIds =[];
+//    $.search_global_issue_card_labelIds =[];
+//    $.search_global_issue_sys_labelIds =[];
+//    $.search_global_issue_white_labelIds =[];
+//   // $.search_issue_select2_labelIds =[];
+//    $.search_issue_isExact =false;
+//    $.search_global_issue_card_isExact =false;
+//    $.search_global_issue_sys_isExact =false;
+//    $.search_global_issue_white_isExact =false;
+//    $.findIssuesbyCondition =$.url_root+"/issue/findIssuesbyCondition.jspa";
+//    $.searchIssuesByCondition =$.url_root+"/search/searchIssuesByCondition.jspa";
 
 	/*
 	 * APP DOM REFERENCES
@@ -931,6 +931,7 @@ var app = function() {
     };
 }();
 
+// 自适应高度
 (function($, window, undefined) {
 
 	var elems = $([]), jq_resize = $.resize = $.extend($.resize, {}), timeout_id, str_setTimeout = 'setTimeout', str_resize = 'resize', str_data = str_resize + '-special-event', str_delay = 'delay', str_throttle = 'throttleWindow';
@@ -1057,15 +1058,15 @@ function check_if_mobile_width() {
 }
 
 // TODO: delete this function later on - no longer needed (?)
-var ie = ( function() {
-
-		var undef, v = 3, div = document.createElement('div'), all = div.getElementsByTagName('i');
-
-		while (div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->', all[0]);
-
-		return v > 4 ? v : undef;
-
-	}()); // do we need this?
+//var ie = ( function() {
+//
+//		var undef, v = 3, div = document.createElement('div'), all = div.getElementsByTagName('i');
+//
+//		while (div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->', all[0]);
+//
+//		return v > 4 ? v : undef;
+//
+//	}()); // do we need this?
 
 /*
  * CUSTOM MENU PLUGIN
@@ -1149,27 +1150,27 @@ $.fn.extend({
 	} // end function
 });
 
-jQuery.fn.doesExist = function() {
-	return jQuery(this).length > 0;
-};
+//jQuery.fn.doesExist = function() {
+//	return jQuery(this).length > 0;
+//};
 
 /*
  * GOOGLE MAPS
  * description: Append google maps to head dynamically
  */
-var gMapsLoaded = false;
-window.gMapsCallback = function() {
-	gMapsLoaded = true;
-	$(window).trigger('gMapsLoaded');
-}
-window.loadGoogleMaps = function() {
-	if (gMapsLoaded)
-		return window.gMapsCallback();
-	var script_tag = document.createElement('script');
-	script_tag.setAttribute("type", "text/javascript");
-	script_tag.setAttribute("src", "http://maps.google.com/maps/api/js?sensor=false&callback=gMapsCallback");
-	(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
-}
+//var gMapsLoaded = false;
+//window.gMapsCallback = function() {
+//	gMapsLoaded = true;
+//	$(window).trigger('gMapsLoaded');
+//}
+//window.loadGoogleMaps = function() {
+//	if (gMapsLoaded)
+//		return window.gMapsCallback();
+//	var script_tag = document.createElement('script');
+//	script_tag.setAttribute("type", "text/javascript");
+//	script_tag.setAttribute("src", "http://maps.google.com/maps/api/js?sensor=false&callback=gMapsCallback");
+//	(document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+//}
 
 /*
  * LOAD SCRIPTS
@@ -1204,117 +1205,117 @@ function loadScript(scriptName, callback) {
 
 // CHECK TO SEE IF URL EXISTS
 /*系统未使用*/
-function checkURL() {
-	//get the url by removing the hash
-	var url = location.hash.replace(/^#/, '');
-	container = $('#content');
-	// Do this if url exists (for page refresh, etc...)
-	if (url) {
-		// remove all active class
-		$('nav li.active').removeClass("active");
-		// match the url and add the active class
-		$('nav li:has(a[href="' + url + '"])').addClass("active");
-		var title = ($('nav a[href="' + url + '"]').attr('title'))
-		// change page title from global var
-		document.title = (title || document.title);
-		//console.log("page title: " + document.title);
-		// parse url to jquery
-		//loadURL(url + location.search, container);
-	} else {
-		// grab the first URL from nav
-		var $this = $('nav > ul > li:first-child > a[href!="#"]');
-		//update hash
-		window.location.hash = $this.attr('href');
-	}
-}
+//function checkURL() {
+//	//get the url by removing the hash
+//	var url = location.hash.replace(/^#/, '');
+//	container = $('#content');
+//	// Do this if url exists (for page refresh, etc...)
+//	if (url) {
+//		// remove all active class
+//		$('nav li.active').removeClass("active");
+//		// match the url and add the active class
+//		$('nav li:has(a[href="' + url + '"])').addClass("active");
+//		var title = ($('nav a[href="' + url + '"]').attr('title'))
+//		// change page title from global var
+//		document.title = (title || document.title);
+//		//console.log("page title: " + document.title);
+//		// parse url to jquery
+//		//loadURL(url + location.search, container);
+//	} else {
+//		// grab the first URL from nav
+//		var $this = $('nav > ul > li:first-child > a[href!="#"]');
+//		//update hash
+//		window.location.hash = $this.attr('href');
+//	}
+//}
 
 // LOAD AJAX PAGES
 /*系统未使用*/
-function loadURL(url, container) {
-	$.ajax({
-		type : "GET",
-		url : url,
-		dataType : 'html',
-		cache : true, // (warning: this will cause a timestamp and will call the request twice)
-		beforeSend : function() {
-			// cog placed
-			container.html('<h1><i class="fa fa-cog fa-spin"></i> Loading...</h1>');
-
-			// Only draw breadcrumb if it is main content material
-			// TODO: see the framerate for the animation in touch devices
-
-			if (container[0] == $("#content")[0]) {
-				drawBreadCrumb();
-				// scroll up
-				$("html").animate({
-					scrollTop : 0
-				}, "fast");
-			}
-		},
-		/*complete: function(){
-	    	// Handle the complete event
-	    	// alert("complete")
-		},*/
-		success : function(data) {
-			// cog replaced here...
-			// alert("success")
-
-			container.css({
-				opacity : '0.0'
-			}).html(data).delay(50).animate({
-				opacity : '1.0'
-			}, 300);
-		},
-		error : function(xhr, ajaxOptions, thrownError) {
-			container.html('<h4 style="margin-top:10px; display:block; text-align:left"><i class="fa fa-warning txt-color-orangeDark"></i> Error 404! Page not found.</h4>');
-		},
-		async : false
-	});
-}
-
-// UPDATE BREADCRUMB
-/*系统未使用*/
-function drawBreadCrumb() {
-	var nav_elems = $('nav li.active > a'), count = nav_elems.length;
-
-	//console.log("breadcrumb")
-	$.bread_crumb.empty();
-	$.bread_crumb.append($("<li>Home</li>"));
-	nav_elems.each(function() {
-		$.bread_crumb.append($("<li></li>").html($.trim($(this).clone().children(".badge").remove().end().text())));
-		// update title when breadcrumb is finished...
-		if (!--count) document.title = $.bread_crumb.find("li:last-child").text();
-	});
-}
+//function loadURL(url, container) {
+//	$.ajax({
+//		type : "GET",
+//		url : url,
+//		dataType : 'html',
+//		cache : true, // (warning: this will cause a timestamp and will call the request twice)
+//		beforeSend : function() {
+//			// cog placed
+//			container.html('<h1><i class="fa fa-cog fa-spin"></i> Loading...</h1>');
+//
+//			// Only draw breadcrumb if it is main content material
+//			// TODO: see the framerate for the animation in touch devices
+//
+//			if (container[0] == $("#content")[0]) {
+//				drawBreadCrumb();
+//				// scroll up
+//				$("html").animate({
+//					scrollTop : 0
+//				}, "fast");
+//			}
+//		},
+//		/*complete: function(){
+//	    	// Handle the complete event
+//	    	// alert("complete")
+//		},*/
+//		success : function(data) {
+//			// cog replaced here...
+//			// alert("success")
+//
+//			container.css({
+//				opacity : '0.0'
+//			}).html(data).delay(50).animate({
+//				opacity : '1.0'
+//			}, 300);
+//		},
+//		error : function(xhr, ajaxOptions, thrownError) {
+//			container.html('<h4 style="margin-top:10px; display:block; text-align:left"><i class="fa fa-warning txt-color-orangeDark"></i> Error 404! Page not found.</h4>');
+//		},
+//		async : false
+//	});
+//}
+//
+//// UPDATE BREADCRUMB
+///*系统未使用*/
+//function drawBreadCrumb() {
+//	var nav_elems = $('nav li.active > a'), count = nav_elems.length;
+//
+//	//console.log("breadcrumb")
+//	$.bread_crumb.empty();
+//	$.bread_crumb.append($("<li>Home</li>"));
+//	nav_elems.each(function() {
+//		$.bread_crumb.append($("<li></li>").html($.trim($(this).clone().children(".badge").remove().end().text())));
+//		// update title when breadcrumb is finished...
+//		if (!--count) document.title = $.bread_crumb.find("li:last-child").text();
+//	});
+//}
 
 // cache the resources for current login user
-(function() {
-	if(localStorage) {
-			var $globalResources = $("#globalResources");
-			var $specificResources = $("#specificResources");
-			var $roles = $("#roles");
-			var globalResCode = $globalResources.val();
-			var specificResCode = $specificResources.val();
-			var roleName = $roles.val();
-			if($.trim(globalResCode) != '') {
-				var globalResCodes = globalResCode.replace(/^\[|\]$|\s/g, "").split(",");
-				localStorage.setItem("globalResources", globalResCodes);
-				$globalResources.remove();
-			}
-
-			if($.trim(specificResCode) != '') {
-				var specificResCodes = specificResCode.replace(/^\[|\]$|\s/g, "").split(",");
-				localStorage.setItem("specificResources", specificResCodes);
-				$specificResources.remove();
-			}
-
-			if($.trim(roleName) != '') {
-				var roleNames = roleName.replace(/^\[|\]$|\s/g, "").split(",");
-				localStorage.setItem("roles", roleNames);
-				$roles.remove();
-			}
-	}
-})();
+//(function() {
+//	if(localStorage) {
+//			var $globalResources = $("#globalResources");
+//			var $specificResources = $("#specificResources");
+//			var $roles = $("#roles");
+//			var globalResCode = $globalResources.val();
+//			var specificResCode = $specificResources.val();
+//			var roleName = $roles.val();
+//			if($.trim(globalResCode) != '') {
+//				var globalResCodes = globalResCode.replace(/^\[|\]$|\s/g, "").split(",");
+//				localStorage.setItem("globalResources", globalResCodes);
+//				$globalResources.remove();
+//			}
+//
+//			if($.trim(specificResCode) != '') {
+//				var specificResCodes = specificResCode.replace(/^\[|\]$|\s/g, "").split(",");
+//				localStorage.setItem("specificResources", specificResCodes);
+//				$specificResources.remove();
+//			}
+//
+//			if($.trim(roleName) != '') {
+//				var roleNames = roleName.replace(/^\[|\]$|\s/g, "").split(",");
+//				localStorage.setItem("roles", roleNames);
+//				$roles.remove();
+//			}
+//	}
+//})();
 
 function checkResult(data, objSuccess, callbackError) {
 	var options={
@@ -1344,7 +1345,7 @@ function checkResult(data, objSuccess, callbackError) {
 
 	if (typeof callbackError == "function") {
 		callbackError();
-		// return; 
+		// return;
 	}
 
 	var errorMsg;
@@ -1353,7 +1354,7 @@ function checkResult(data, objSuccess, callbackError) {
 	}catch(ex){
 
 		errorMsg = common.placeholderConversion({
-  			  "msg":exception.global.evalError,
+  			  "msg":"错误",
 			  "args":[data.errorMessage]
 		});
 	}
@@ -1368,40 +1369,40 @@ function checkResult(data, objSuccess, callbackError) {
 	return;
 }
 
-/*
- 全局函数
- */
-function showOperationError(xhr, textStatus, errorThrown) {
-	var msg = exception.global.network;
-	if(errorThrown) {
-		msg += errorThrown;
-	}else if(textStatus) {
-		msg += textStatus;
-	}else {
-		msg += exception.global.againPlease;
-	}
-	$.smallBox({
-	    title : msg,
-	    content : "",
-	    color : $boxColors.red,
-	    iconSmall : "fa fa-times",
-	    timeout : 3000
-	});
-}
-
-/*
- 全局函数
- */
-function showSimpleError(msg) {
-	$.smallBox({
-	    title : msg,
-	    content : "",
-	    color : $boxColors.red,
-	    iconSmall : "fa fa-times",
-	    timeout : 3000
-	});
-}
-
+///*
+// 全局函数
+// */
+//function showOperationError(xhr, textStatus, errorThrown) {
+//	var msg = exception.global.network;
+//	if(errorThrown) {
+//		msg += errorThrown;
+//	}else if(textStatus) {
+//		msg += textStatus;
+//	}else {
+//		msg += exception.global.againPlease;
+//	}
+//	$.smallBox({
+//	    title : msg,
+//	    content : "",
+//	    color : $boxColors.red,
+//	    iconSmall : "fa fa-times",
+//	    timeout : 3000
+//	});
+//}
+//
+///*
+// 全局函数
+// */
+//function showSimpleError(msg) {
+//	$.smallBox({
+//	    title : msg,
+//	    content : "",
+//	    color : $boxColors.red,
+//	    iconSmall : "fa fa-times",
+//	    timeout : 3000
+//	});
+//}
+//
 function getUrlRoot(onlyPostPath)
 {
     var strFullPath=window.document.location.href;
@@ -1416,132 +1417,132 @@ function getUrlRoot(onlyPostPath)
     return prePath+postPath;
 }
 
-//移除普通数组中指定的元素，数组基本格式：["a", "b"], specificElement=["a"]
-Array.prototype.remove = function(specificElement) {
-    return this.filter(function(ele) {
-      return (specificElement instanceof Array && $.inArray(ele, specificElement) == -1);
-    });
-};
+////移除普通数组中指定的元素，数组基本格式：["a", "b"], specificElement=["a"]
+//Array.prototype.remove = function(specificElement) {
+//    return this.filter(function(ele) {
+//      return (specificElement instanceof Array && $.inArray(ele, specificElement) == -1);
+//    });
+//};
+//
+////移除普通数组中指定的对象，数组基本格式：[{id: 1, text: "aaa"}], text: "aaa"，比对标准: text相等
+//// @Deprecated, use removeJSONBy instead.
+//Array.prototype.removeJSON = function(text) {
+//    return this.filter(function(ele) {
+//      return typeof text == "number" && ele.id != text;
+//    });
+//};
+//
+//// 移除普通数组中指定的对象
+//// {id: 1, text: xxx}
+//Array.prototype.removeJSONBy = function(key, value) {
+//    var len = this.length,
+//        i;
+//
+//    for (i = 0; i < len; i++) {
+//        if (this[i][key] === value) {
+//            this.splice(i, 1);
+//            break;
+//        }
+//    }
+//}
+//
+////移除普通数组中指定的元素，数组基本格式：["a", "b"], item 为 1
+//Array.prototype.removeItem = function(item) {
+//    for(var i = 0, j = 0, len = this.length; i < len; i++) {
+//    	if(item != this[i]) {
+//    		this[j++] = this[i];
+//    	}
+//    }
+//    this.length -= 1;
+//    return this;
+//};
+//
+//Array.prototype.empty = function() {
+//    this.splice(0);
+//};
 
-//移除普通数组中指定的对象，数组基本格式：[{id: 1, text: "aaa"}], text: "aaa"，比对标准: text相等
-// @Deprecated, use removeJSONBy instead.
-Array.prototype.removeJSON = function(text) {
-    return this.filter(function(ele) {
-      return typeof text == "number" && ele.id != text;
-    });
-};
-
-// 移除普通数组中指定的对象
-// {id: 1, text: xxx}
-Array.prototype.removeJSONBy = function(key, value) {
-    var len = this.length,
-        i;
-    
-    for (i = 0; i < len; i++) {
-        if (this[i][key] === value) {
-            this.splice(i, 1);
-            break;
-        }
-    }
-}
-
-//移除普通数组中指定的元素，数组基本格式：["a", "b"], item 为 1
-Array.prototype.removeItem = function(item) {
-    for(var i = 0, j = 0, len = this.length; i < len; i++) {
-    	if(item != this[i]) {
-    		this[j++] = this[i];
-    	}
-    }
-    this.length -= 1;
-    return this;
-};
-
-Array.prototype.empty = function() {
-    this.splice(0);
-};
-
-// 格式化输出指定日期对象
-Date.prototype.Format = function (fmt) {
-    var o = {
-        "M+": this.getMonth() + 1, //月份
-        "d+": this.getDate(), //日
-        "h+": this.getHours(), //小时
-        "m+": this.getMinutes(), //分
-        "s+": this.getSeconds(), //秒
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-        "S": this.getMilliseconds() //毫秒
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
-};
-
-
-$.validator.addMethod("customRule", function(value, element, rule) {
-	if (value.length) {
-	    var r = value.match(rule);
-	    if (!r) {
-	        return false;
-	    }
-	}
-
-	return true;
-},"请输入数字、26个英文字母或者下划线组成的字符串");
-
-/*
-	防止重复提交。
-	传入的参数是目标HTML DOM元素（注意：不是jQuery DOM元素）。
-	锁定成功返回 true, 锁定失败返回 false 。
-*/
-function lockItms(ele) {
-	if(!ele || typeof(ele) !== 'object') {
-		return false;
-	}
-	if(!ele['lock_dtms']) {
-		ele['lock_dtms'] = true;
-		return true;
-	}
-	return false;
-}
-
-//解锁
-function unlockItms(ele) {
-	if(!ele || typeof(ele) !== 'object') {
-		return;
-	}
-	setTimeout(function(){
-    	ele['lock_dtms'] = false;
-	}, 500);
-}
-
-//用于防止SmallBox的重复提交。
-function lockSmallBox() {
-	return lockItms($('.SmallBox').get(0));
-}
-
-//移除所有的通知。
-function clearSmallBox() {
-	$('#divSmallBoxes').html('');
-}
-
-// define a single global variable
-// Dec 15, 2014
-var Eipd = {
-	namespace: function(ns) {
-		var paths = ns.split("."),
-			obj = this,
-			len = paths.length,
-			i;
-
-		for (i = 0; i < len; i++) {
-			if (!obj[paths[i]]) {
-				obj[paths[i]] = {};
-			}
-
-			obj = obj[paths[i]];
-		}
-
-		return obj;
-	}
-};
+//// 格式化输出指定日期对象
+//Date.prototype.Format = function (fmt) {
+//    var o = {
+//        "M+": this.getMonth() + 1, //月份
+//        "d+": this.getDate(), //日
+//        "h+": this.getHours(), //小时
+//        "m+": this.getMinutes(), //分
+//        "s+": this.getSeconds(), //秒
+//        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+//        "S": this.getMilliseconds() //毫秒
+//    };
+//    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+//    for (var k in o)
+//    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+//    return fmt;
+//};
+//
+//
+//$.validator.addMethod("customRule", function(value, element, rule) {
+//	if (value.length) {
+//	    var r = value.match(rule);
+//	    if (!r) {
+//	        return false;
+//	    }
+//	}
+//
+//	return true;
+//},"请输入数字、26个英文字母或者下划线组成的字符串");
+//
+///*
+//	防止重复提交。
+//	传入的参数是目标HTML DOM元素（注意：不是jQuery DOM元素）。
+//	锁定成功返回 true, 锁定失败返回 false 。
+//*/
+//function lockItms(ele) {
+//	if(!ele || typeof(ele) !== 'object') {
+//		return false;
+//	}
+//	if(!ele['lock_dtms']) {
+//		ele['lock_dtms'] = true;
+//		return true;
+//	}
+//	return false;
+//}
+//
+////解锁
+//function unlockItms(ele) {
+//	if(!ele || typeof(ele) !== 'object') {
+//		return;
+//	}
+//	setTimeout(function(){
+//    	ele['lock_dtms'] = false;
+//	}, 500);
+//}
+//
+////用于防止SmallBox的重复提交。
+//function lockSmallBox() {
+//	return lockItms($('.SmallBox').get(0));
+//}
+//
+////移除所有的通知。
+//function clearSmallBox() {
+//	$('#divSmallBoxes').html('');
+//}
+//
+//// define a single global variable
+//// Dec 15, 2014
+//var Eipd = {
+//	namespace: function(ns) {
+//		var paths = ns.split("."),
+//			obj = this,
+//			len = paths.length,
+//			i;
+//
+//		for (i = 0; i < len; i++) {
+//			if (!obj[paths[i]]) {
+//				obj[paths[i]] = {};
+//			}
+//
+//			obj = obj[paths[i]];
+//		}
+//
+//		return obj;
+//	}
+//};
